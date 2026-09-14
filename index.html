@@ -2,39 +2,48 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>TecnoTrade | Cupones & Promociones</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-main: #060911;
-      --bg-card: rgba(13, 20, 38, 0.85);
-      --bg-card-hover: rgba(19, 30, 56, 0.95);
-      --border-sketch: #38bdf8;
-      --border-subtle: rgba(56, 189, 248, 0.25);
+      --bg-main: #04070c;
+      /* Ajuste Glassmorphism para legibilidad sobre el fondo */
+      --glass-bg: rgba(10, 15, 30, 0.65);
+      --glass-bg-hover: rgba(15, 25, 45, 0.85);
+      --glass-border: rgba(56, 189, 248, 0.35);
+      --glass-blur: blur(16px);
+      
       --text-main: #f8fafc;
-      --text-muted: #94a3b8;
+      --text-muted: #cbd5e1;
       --accent-cyan: #38bdf8;
-      --accent-blue: #0284c7;
       --accent-green: #10b981;
       --accent-gold: #f59e0b;
-      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      --font-cursive: 'Caveat', cursive, 'Segoe Print', 'Bradley Hand', sans-serif;
+      
+      --font-body: 'Inter', sans-serif;
+      --font-cursive: 'Caveat', cursive, sans-serif;
+      
+      --border-sketch: 255px 15px 225px 15px / 15px 225px 15px 255px;
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      -webkit-tap-highlight-color: transparent;
     }
 
     body {
       background-color: var(--bg-main);
+      /* Fondo dinámico y oscuro para resaltar el texto, fijado para móviles */
       background-image: 
-        radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.05) 0%, transparent 20%),
-        radial-gradient(circle at 90% 80%, rgba(2, 132, 199, 0.05) 0%, transparent 20%);
+        linear-gradient(to bottom, rgba(4, 7, 12, 0.75), rgba(4, 7, 12, 0.9)),
+        url('https://raw.githubusercontent.com/tecnotradepty/cuponestt/9dea982cdf0fdb6b1c65684be621a2797c22095c/imagenes/file_000000008c9c81f5be91ed5ffd666fd0.png');
+      background-size: cover;
+      background-position: center top;
+      background-attachment: fixed;
       color: var(--text-main);
       font-family: var(--font-body);
       line-height: 1.5;
@@ -44,6 +53,16 @@
     .container {
       max-width: 1100px;
       margin: 0 auto;
+    }
+
+    /* Clases Base Glassmorphism + Sketch */
+    .glass-card {
+      background: var(--glass-bg);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border: 1.5px solid var(--glass-border);
+      border-radius: var(--border-sketch);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
     }
 
     /* Header & Quiénes Somos */
@@ -58,11 +77,12 @@
 
     .validity-banner {
       display: inline-block;
-      background: rgba(245, 158, 11, 0.1);
+      background: rgba(245, 158, 11, 0.15);
+      backdrop-filter: blur(5px);
       border: 2px dashed var(--accent-gold);
       color: var(--accent-gold);
       padding: 0.35rem 1.25rem;
-      border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+      border-radius: var(--border-sketch);
       font-family: var(--font-cursive);
       font-size: 1.35rem;
       font-weight: 700;
@@ -78,31 +98,27 @@
     }
 
     .brand-logo {
-      width: 105px;
-      height: 105px;
+      width: 110px;
+      height: 110px;
       object-fit: cover;
-      border-radius: 255px 25px 225px 25px / 25px 225px 25px 255px;
+      border-radius: var(--border-sketch);
       border: 2px solid var(--accent-cyan);
-      box-shadow: 3px 3px 0px rgba(56, 189, 248, 0.4);
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
       background: #000;
     }
 
     .brand-title {
       font-family: var(--font-cursive);
-      font-size: 3.2rem;
+      font-size: 3.5rem;
       font-weight: 700;
       line-height: 1;
       color: var(--text-main);
-      letter-spacing: -0.01em;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
     }
 
     /* Tarjeta Quiénes Somos */
     .about-card {
-      background: var(--bg-card);
-      border: 2px solid var(--border-subtle);
-      border-radius: 255px 20px 225px 20px / 20px 225px 20px 255px;
       padding: 1.5rem;
-      box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.4);
       text-align: center;
       max-width: 820px;
       margin: 0 auto;
@@ -114,14 +130,16 @@
       color: var(--accent-cyan);
       margin-bottom: 0.5rem;
       line-height: 1.1;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
     }
 
     .about-text {
       font-family: var(--font-cursive);
       font-size: 1.45rem;
       color: var(--text-main);
-      line-height: 1.4;
+      line-height: 1.3;
       margin-bottom: 1.25rem;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
     }
 
     .store-links {
@@ -134,44 +152,40 @@
     .store-link-btn {
       display: inline-flex;
       align-items: center;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1.5px solid var(--border-subtle);
-      border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1.5px solid var(--accent-cyan);
+      border-radius: var(--border-sketch);
       color: var(--text-main);
-      padding: 0.45rem 1.1rem;
+      padding: 0.5rem 1.1rem;
       font-family: var(--font-cursive);
       font-size: 1.25rem;
       font-weight: 700;
       text-decoration: none;
       transition: all 0.2s;
+      box-shadow: 2px 2px 0px rgba(0,0,0,0.6);
     }
 
     .store-link-btn:hover {
-      background: rgba(56, 189, 248, 0.12);
-      border-color: var(--accent-cyan);
-      box-shadow: 2px 2px 0px var(--accent-cyan);
+      background: rgba(56, 189, 248, 0.2);
       transform: translate(-1px, -1px);
+      box-shadow: 3px 3px 0px var(--accent-cyan);
     }
 
     /* Controles y Búsqueda */
     .controls {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 1.25rem;
       margin-bottom: 2.5rem;
-      background: var(--bg-card);
       padding: 1.25rem;
-      border: 2px solid var(--border-subtle);
-      border-radius: 255px 25px 225px 25px / 25px 225px 25px 255px;
-      box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
     }
 
     .search-box input {
       width: 100%;
-      padding: 0.75rem 1rem;
-      background: rgba(6, 9, 17, 0.8);
-      border: 1.5px solid var(--border-subtle);
-      border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+      padding: 0.85rem 1rem;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1.5px solid var(--glass-border);
+      border-radius: var(--border-sketch);
       color: var(--text-main);
       font-size: 1rem;
       outline: none;
@@ -180,50 +194,56 @@
 
     .search-box input:focus {
       border-color: var(--accent-cyan);
-      box-shadow: 2px 2px 0px var(--accent-cyan);
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
     }
 
     .filter-group {
       display: flex;
-      flex-wrap: wrap;
       gap: 0.5rem;
       align-items: center;
+      /* Scroll horizontal optimizado para móviles */
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none; /* Firefox */
+    }
+    
+    .filter-group::-webkit-scrollbar {
+      display: none; /* Chrome/Safari */
     }
 
     .filter-title {
       font-family: var(--font-cursive);
-      font-size: 1.25rem;
+      font-size: 1.35rem;
       font-weight: 700;
-      color: var(--text-muted);
+      color: var(--text-main);
       margin-right: 0.5rem;
+      flex-shrink: 0;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
     }
 
     .filter-btn {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1.5px solid var(--border-subtle);
-      border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1.5px solid var(--glass-border);
+      border-radius: var(--border-sketch);
       color: var(--text-muted);
-      padding: 0.35rem 0.9rem;
+      padding: 0.4rem 1rem;
       font-family: var(--font-cursive);
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       font-weight: 700;
       cursor: pointer;
+      flex-shrink: 0;
       transition: all 0.2s;
-    }
-
-    .filter-btn:hover {
-      background: rgba(56, 189, 248, 0.1);
-      color: var(--text-main);
     }
 
     .filter-btn.active {
       background: var(--accent-cyan);
       border-color: var(--accent-cyan);
       color: #041016;
-      box-shadow: 2px 2px 0px rgba(255, 255, 255, 0.2);
+      box-shadow: 2px 2px 0px rgba(0,0,0,0.5);
     }
 
-    /* Secciones */
+    /* Secciones y Grid */
     .catalog-section {
       margin-bottom: 3.5rem;
     }
@@ -232,54 +252,52 @@
       display: flex;
       align-items: center;
       gap: 0.75rem;
-      margin-bottom: 1.25rem;
-      border-bottom: 2px dashed var(--border-subtle);
+      margin-bottom: 1.5rem;
+      border-bottom: 2px dashed var(--glass-border);
       padding-bottom: 0.5rem;
     }
 
     .section-header h2 {
       font-family: var(--font-cursive);
-      font-size: 2.3rem;
+      font-size: 2.5rem;
       font-weight: 700;
       color: var(--text-main);
       line-height: 1;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
     }
 
     .section-badge {
-      background: rgba(56, 189, 248, 0.15);
+      background: rgba(56, 189, 248, 0.2);
+      backdrop-filter: blur(4px);
       border: 1px solid var(--accent-cyan);
       color: var(--accent-cyan);
       font-family: var(--font-cursive);
-      font-size: 1rem;
+      font-size: 1.1rem;
       font-weight: 700;
       padding: 0.15rem 0.65rem;
-      border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+      border-radius: var(--border-sketch);
     }
 
     .coupon-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       gap: 1.5rem;
     }
 
     /* Cards */
     .coupon-card {
-      background: var(--bg-card);
-      border: 2px solid var(--border-subtle);
-      border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
       padding: 1.25rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.4);
-      transition: all 0.2s ease;
+      transition: all 0.3s ease;
     }
 
     .coupon-card:hover {
-      transform: translateY(-3px);
+      background: var(--glass-bg-hover);
       border-color: var(--accent-cyan);
-      box-shadow: 5px 5px 0px var(--accent-cyan);
-      background: var(--bg-card-hover);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.7);
     }
 
     .card-top {
@@ -289,50 +307,37 @@
     .card-badges {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.75rem;
     }
 
     .badge-brand {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      padding: 0.15rem 0.5rem;
-      border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--border-sketch);
       font-family: var(--font-cursive);
-      font-size: 1rem;
+      font-size: 1.1rem;
       font-weight: 700;
-      color: var(--text-muted);
+      color: var(--text-main);
     }
 
     .badge-quality {
       font-family: var(--font-cursive);
       font-weight: 700;
-      font-size: 1rem;
-      padding: 0.15rem 0.55rem;
-      border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+      font-size: 1.1rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--border-sketch);
     }
 
-    .quality-incell {
-      background: rgba(148, 163, 184, 0.1);
-      color: #94a3b8;
-      border: 1px dashed #94a3b8;
-    }
-
-    .quality-oled {
-      background: rgba(56, 189, 248, 0.1);
-      color: var(--accent-cyan);
-      border: 1px dashed var(--accent-cyan);
-    }
-
-    .quality-original {
-      background: rgba(16, 185, 129, 0.1);
-      color: var(--accent-green);
-      border: 1px dashed var(--accent-green);
-    }
+    .quality-incell { background: rgba(148, 163, 184, 0.15); color: #cbd5e1; border: 1px dashed #cbd5e1; }
+    .quality-oled { background: rgba(56, 189, 248, 0.15); color: var(--accent-cyan); border: 1px dashed var(--accent-cyan); }
+    .quality-original { background: rgba(16, 185, 129, 0.15); color: var(--accent-green); border: 1px dashed var(--accent-green); }
 
     .card-title {
-      font-size: 1.15rem;
-      font-weight: 700;
+      font-size: 1.25rem;
+      font-weight: 800;
       color: var(--text-main);
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
     }
 
     .pricing-container {
@@ -340,48 +345,48 @@
       align-items: baseline;
       gap: 0.75rem;
       margin-bottom: 1rem;
-      background: rgba(0, 0, 0, 0.3);
-      border: 1px solid var(--border-subtle);
-      border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
-      padding: 0.65rem 0.85rem;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--border-sketch);
+      padding: 0.75rem;
     }
 
     .price-regular {
-      font-size: 0.95rem;
+      font-size: 1rem;
       text-decoration: line-through;
       color: var(--text-muted);
     }
 
     .price-promo {
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       font-weight: 800;
       color: var(--accent-green);
     }
 
     .badge-save {
       margin-left: auto;
-      background: rgba(16, 185, 129, 0.15);
+      background: rgba(16, 185, 129, 0.2);
       border: 1px solid var(--accent-green);
       color: var(--accent-green);
       font-family: var(--font-cursive);
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       font-weight: 700;
-      padding: 0.1rem 0.5rem;
-      border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+      padding: 0.15rem 0.6rem;
+      border-radius: var(--border-sketch);
     }
 
     .coupon-code-box {
       border: 1.5px dashed var(--accent-gold);
-      background: rgba(245, 158, 11, 0.05);
-      border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
-      padding: 0.4rem;
+      background: rgba(245, 158, 11, 0.1);
+      border-radius: var(--border-sketch);
+      padding: 0.5rem;
       text-align: center;
-      margin-bottom: 0.75rem;
+      margin-bottom: 1rem;
     }
 
     .coupon-label {
       font-family: var(--font-cursive);
-      font-size: 0.95rem;
+      font-size: 1rem;
       color: var(--accent-gold);
       display: block;
       font-weight: 700;
@@ -389,8 +394,8 @@
 
     .coupon-code {
       font-family: monospace;
-      font-size: 1rem;
-      font-weight: 700;
+      font-size: 1.1rem;
+      font-weight: 800;
       color: var(--text-main);
       letter-spacing: 0.1em;
     }
@@ -399,10 +404,10 @@
       background: var(--accent-green);
       color: #041016;
       border: 2px solid #041016;
-      border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
-      padding: 0.55rem;
+      border-radius: var(--border-sketch);
+      padding: 0.65rem;
       font-family: var(--font-cursive);
-      font-size: 1.25rem;
+      font-size: 1.4rem;
       font-weight: 700;
       cursor: pointer;
       text-align: center;
@@ -413,47 +418,50 @@
     }
 
     .btn-action:hover {
-      opacity: 0.95;
-      transform: translate(-1px, -1px);
-      box-shadow: 3px 3px 0px #041016;
+      background: #34d399;
+      transform: translate(-2px, -2px);
+      box-shadow: 4px 4px 0px #041016;
     }
 
     .toggle-container {
       display: flex;
       justify-content: center;
-      margin-top: 1.5rem;
+      margin-top: 1.75rem;
     }
 
     .btn-toggle-view {
-      background: rgba(255, 255, 255, 0.04);
+      background: rgba(0, 0, 0, 0.5);
       border: 1.5px solid var(--accent-cyan);
       color: var(--accent-cyan);
-      padding: 0.5rem 1.4rem;
+      padding: 0.6rem 1.6rem;
       font-family: var(--font-cursive);
-      font-size: 1.25rem;
+      font-size: 1.35rem;
       font-weight: 700;
-      border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+      border-radius: var(--border-sketch);
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
       transition: all 0.2s ease;
-      box-shadow: 2px 2px 0px var(--accent-cyan);
+      box-shadow: 2px 2px 0px rgba(0,0,0,0.6);
+      backdrop-filter: blur(5px);
     }
 
     .btn-toggle-view:hover {
-      background: rgba(56, 189, 248, 0.15);
+      background: rgba(56, 189, 248, 0.2);
       transform: translate(-1px, -1px);
-      box-shadow: 3px 3px 0px var(--accent-cyan);
     }
 
     .empty-state {
       grid-column: 1 / -1;
       text-align: center;
-      padding: 2rem;
+      padding: 2.5rem;
       color: var(--text-muted);
       font-family: var(--font-cursive);
-      font-size: 1.3rem;
+      font-size: 1.5rem;
+      background: rgba(0,0,0,0.4);
+      border-radius: var(--border-sketch);
+      border: 1px dashed var(--glass-border);
     }
   </style>
 </head>
@@ -470,16 +478,14 @@
           src="https://raw.githubusercontent.com/tecnotradepty/cuponestt/b678d6fe731eb2b6aaed1807655be55ad45aa0a0/imagenes/768420594_18089021243367758_8129196020523341355_n.jpg" 
           alt="TecnoTrade Logo" 
           class="brand-logo" 
-          loading="eager"
         />
         <h1 class="brand-title">TecnoTrade</h1>
       </div>
 
-      <!-- Sección Quiénes Somos Integrada -->
-      <section class="about-card">
+      <section class="about-card glass-card">
         <h2>¿Quiénes Somos?</h2>
         <p class="about-text">
-          TecnoTrade es la página de los técnicos de la tienda Mobile Hub. Aquí puedes consultar nuestros precios promocionales, canjear cupones de taller y visitar nuestras plataformas oficiales:
+          TecnoTrade es la página oficial de los técnicos especializados de la tienda Mobile Hub. Navega nuestro catálogo interactivo, filtra tu dispositivo y canjea el precio promocional reservando directamente por WhatsApp.
         </p>
         <div class="store-links">
           <a href="https://www.instagram.com/tecnotradepty/" target="_blank" rel="noopener noreferrer" class="store-link-btn">
@@ -492,13 +498,13 @@
       </section>
     </header>
 
-    <section class="controls">
+    <section class="controls glass-card">
       <div class="search-box">
-        <input type="text" id="searchInput" placeholder="Buscar por modelo (ej. iPhone 13, Galaxy S23, Pixel 7 Pro, A54)..." />
+        <input type="text" id="searchInput" placeholder="Busca tu modelo (ej. iPhone 13, Galaxy S23, Pixel 7 Pro)..." />
       </div>
 
       <div class="filter-group">
-        <span class="filter-title">Filtrar Marca:</span>
+        <span class="filter-title">Filtrar por Marca:</span>
         <button class="filter-btn active" data-brand="all">Todas</button>
         <button class="filter-btn" data-brand="Apple">Apple</button>
         <button class="filter-btn" data-brand="Samsung">Samsung</button>
@@ -621,7 +627,7 @@
       const waUrl = `https://wa.me/${WA_NUMBER}?text=${waMsg}`;
 
       return `
-        <article class="coupon-card">
+        <article class="coupon-card glass-card">
           <div class="card-top">
             <div class="card-badges">
               <span class="badge-brand">${item.brand}</span>
