@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cupones y Promociones | Servicio Técnico Especializado</title>
+  <title>TecnoTrade | Cupones & Promociones</title>
   <style>
     :root {
       --bg-main: #0b0f19;
@@ -37,17 +37,27 @@
       margin: 0 auto;
     }
 
-    /* Header */
+    /* Header & Branding */
     header {
       text-align: center;
       margin-bottom: 2rem;
     }
 
-    header h1 {
-      font-size: 2.2rem;
+    .brand-title {
+      font-size: 2.4rem;
       font-weight: 800;
-      letter-spacing: -0.025em;
-      margin-bottom: 0.5rem;
+      letter-spacing: -0.03em;
+      color: var(--text-main);
+      margin-bottom: 0.2rem;
+    }
+
+    .brand-subtitle {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--accent-cyan);
+      margin-bottom: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
 
     .validity-banner {
@@ -59,14 +69,38 @@
       border-radius: 50px;
       font-size: 0.85rem;
       font-weight: 700;
-      margin-bottom: 0.75rem;
+      margin-bottom: 1rem;
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
 
-    header p {
+    .store-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .store-link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
       color: var(--text-muted);
-      font-size: 0.95rem;
+      padding: 0.4rem 0.9rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .store-link-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text-main);
+      border-color: rgba(255, 255, 255, 0.2);
     }
 
     /* Controls */
@@ -346,11 +380,6 @@
       border-color: var(--accent-cyan);
     }
 
-    .btn-toggle-view .icon-arrow {
-      font-size: 0.8rem;
-      transition: transform 0.2s ease;
-    }
-
     .empty-state {
       grid-column: 1 / -1;
       text-align: center;
@@ -365,13 +394,22 @@
   <div class="container">
     <header>
       <div class="validity-banner">Ofertas válidas del 15 de septiembre al 31 de octubre</div>
-      <h1>Portal de Cupones & Promociones</h1>
-      <p>Selecciona tu modelo y canjea la tarifa directa en taller vía WhatsApp</p>
+      <h1 class="brand-title">TecnoTrade</h1>
+      <p class="brand-subtitle">Técnicos de la tienda Mobile Hub</p>
+      
+      <div class="store-links">
+        <a href="https://www.instagram.com/tecnotradepty/" target="_blank" rel="noopener noreferrer" class="store-link-btn">
+          Instagram: @tecnotradepty
+        </a>
+        <a href="https://maps.app.goo.gl/UeLwD78YH6QJszY8A" target="_blank" rel="noopener noreferrer" class="store-link-btn">
+          Ver Ubicación en Maps
+        </a>
+      </div>
     </header>
 
     <section class="controls">
       <div class="search-box">
-        <input type="text" id="searchInput" placeholder="Buscar por modelo (ej. iPhone 13, Galaxy S23, A54, Pixel 7)..." />
+        <input type="text" id="searchInput" placeholder="Buscar por modelo (ej. iPhone 13, Galaxy S23, Pixel 7 Pro)..." />
       </div>
 
       <div class="filter-group">
@@ -416,7 +454,7 @@
   </div>
 
   <script>
-    const WA_NUMBER = "50767006067";
+    const WA_NUMBER = "50768529324";
 
     const catalog = [
       /* ==================== PANTALLAS ==================== */
@@ -442,6 +480,9 @@
       { id: "p-18", category: "Pantallas", brand: "Honor", model: "Honor Magic 5 Lite / 6 Lite", quality: "OLED", regular: 75, promo: 62, code: "HON13" },
 
       { id: "p-19", category: "Pantallas", brand: "Google", model: "Pixel 6 / 6A / 7", quality: "OLED", regular: 85, promo: 70, code: "PIX15" },
+      { id: "p-20", category: "Pantallas", brand: "Google", model: "Pixel 6 Pro", quality: "OLED", regular: 95, promo: 78, code: "PIXPRO17" },
+      { id: "p-21", category: "Pantallas", brand: "Google", model: "Pixel 7 Pro", quality: "OLED", regular: 95, promo: 78, code: "PIXPRO17" },
+      { id: "p-22", category: "Pantallas", brand: "Google", model: "Pixel 8 Pro", quality: "OLED", regular: 105, promo: 85, code: "PIXPRO20" },
 
       /* ==================== TAPAS TRASERAS ==================== */
       { id: "t-1", category: "Tapas Traseras", brand: "Apple", model: "iPhone 8 / 8 Plus / X / XR / XS / 11", quality: "Original", regular: 40, promo: 30, code: "TAPA10" },
@@ -477,7 +518,6 @@
     let currentBrand = "all";
     let currentSearch = "";
 
-    // Estado individual de despliegue por categoría
     const expandedSections = {
       "Pantallas": false,
       "Tapas Traseras": false,
@@ -492,7 +532,7 @@
 
     function createCardHTML(item) {
       const savings = item.regular - item.promo;
-      const waMsg = encodeURIComponent(`Hola! Quiero canjear el cupón *${item.code}* para *${item.category}* de *${item.brand} ${item.model}* (Calidad: ${item.quality}) por *$${item.promo}* (Ahorro: $${savings}).`);
+      const waMsg = encodeURIComponent(`Hola TecnoTrade! Quiero canjear el cupón *${item.code}* para *${item.category}* de *${item.brand} ${item.model}* (Calidad: ${item.quality}) por *$${item.promo}* (Ahorro: $${savings}).`);
       const waUrl = `https://wa.me/${WA_NUMBER}?text=${waMsg}`;
 
       return `
@@ -559,16 +599,14 @@
         const isExpanded = expandedSections[cat.key];
         const isSearchingOrFiltering = currentSearch !== "" || currentBrand !== "all";
 
-        // Si se busca o filtra, mostrar todos. De lo contrario, aplicar el límite de 3
         const visibleItems = (isExpanded || isSearchingOrFiltering) ? items : items.slice(0, 3);
         gridEl.innerHTML = visibleItems.map(createCardHTML).join("");
 
-        // Control del botón Ver más / Ver menos
         if (items.length > 3 && !isSearchingOrFiltering) {
           toggleEl.innerHTML = `
             <button class="btn-toggle-view" onclick="toggleSection('${cat.key}')">
               <span>${isExpanded ? "Ocultar modelos" : `Ver todos los modelos (${items.length})`}</span>
-              <span class="icon-arrow">${isExpanded ? "▲" : "▼"}</span>
+              <span>${isExpanded ? "▲" : "▼"}</span>
             </button>
           `;
         } else {
@@ -593,7 +631,6 @@
       renderSections();
     });
 
-    // Exponer función de toggle en ámbito global
     window.toggleSection = toggleSection;
 
     // Render inicial
