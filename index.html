@@ -50,7 +50,6 @@
       margin-bottom: 0.5rem;
     }
 
-    /* Banner Vigencia */
     .validity-banner {
       display: inline-block;
       background: rgba(245, 158, 11, 0.15);
@@ -70,7 +69,7 @@
       font-size: 0.95rem;
     }
 
-    /* Controls: Search & Brand Filters */
+    /* Controls */
     .controls {
       display: flex;
       flex-direction: column;
@@ -137,7 +136,7 @@
       font-weight: 700;
     }
 
-    /* Section Styling */
+    /* Sections */
     .catalog-section {
       margin-bottom: 3.5rem;
     }
@@ -167,7 +166,6 @@
       text-transform: uppercase;
     }
 
-    /* Grid */
     .coupon-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
@@ -321,6 +319,38 @@
       opacity: 0.9;
     }
 
+    /* Toggle Button */
+    .toggle-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 1.5rem;
+    }
+
+    .btn-toggle-view {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      color: var(--accent-cyan);
+      padding: 0.6rem 1.4rem;
+      font-size: 0.9rem;
+      font-weight: 700;
+      border-radius: 50px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s ease;
+    }
+
+    .btn-toggle-view:hover {
+      background: rgba(6, 182, 212, 0.15);
+      border-color: var(--accent-cyan);
+    }
+
+    .btn-toggle-view .icon-arrow {
+      font-size: 0.8rem;
+      transition: transform 0.2s ease;
+    }
+
     .empty-state {
       grid-column: 1 / -1;
       text-align: center;
@@ -361,6 +391,7 @@
         <span class="section-badge">Instalación Garantizada</span>
       </div>
       <div class="coupon-grid" id="grid-pantallas"></div>
+      <div class="toggle-container" id="toggle-container-pantallas"></div>
     </section>
 
     <!-- SECCIÓN TAPAS TRASERAS -->
@@ -370,6 +401,7 @@
         <span class="section-badge">Cierre Hermético</span>
       </div>
       <div class="coupon-grid" id="grid-tapas"></div>
+      <div class="toggle-container" id="toggle-container-tapas"></div>
     </section>
 
     <!-- SECCIÓN BATERÍAS -->
@@ -379,13 +411,13 @@
         <span class="section-badge">Salud 100%</span>
       </div>
       <div class="coupon-grid" id="grid-baterias"></div>
+      <div class="toggle-container" id="toggle-container-baterias"></div>
     </section>
   </div>
 
   <script>
-    const WA_NUMBER = "50767006067"; // Número para canje directo
+    const WA_NUMBER = "50767006067";
 
-    // Calidades unificadas estrictas: Incell, OLED, Original
     const catalog = [
       /* ==================== PANTALLAS ==================== */
       { id: "p-1", category: "Pantallas", brand: "Apple", model: "iPhone X / XS", quality: "OLED", regular: 60, promo: 45, code: "SCRN15" },
@@ -445,6 +477,13 @@
     let currentBrand = "all";
     let currentSearch = "";
 
+    // Estado individual de despliegue por categoría
+    const expandedSections = {
+      "Pantallas": false,
+      "Tapas Traseras": false,
+      "Baterías": false
+    };
+
     function getQualityClass(quality) {
       if (quality === "Incell") return "quality-incell";
       if (quality === "OLED") return "quality-oled";
@@ -486,6 +525,11 @@
       `;
     }
 
+    function toggleSection(catKey) {
+      expandedSections[catKey] = !expandedSections[catKey];
+      renderSections();
+    }
+
     function renderSections() {
       const filtered = catalog.filter(item => {
         const matchBrand = currentBrand === "all" || item.brand === currentBrand;
@@ -496,25 +540,44 @@
       });
 
       const categories = [
-        { key: "Pantallas", gridId: "grid-pantallas", sectionId: "section-pantallas" },
-        { key: "Tapas Traseras", gridId: "grid-tapas", sectionId: "section-tapas" },
-        { key: "Baterías", gridId: "grid-baterias", sectionId: "section-baterias" }
+        { key: "Pantallas", gridId: "grid-pantallas", toggleId: "toggle-container-pantallas" },
+        { key: "Tapas Traseras", gridId: "grid-tapas", toggleId: "toggle-container-tapas" },
+        { key: "Baterías", gridId: "grid-baterias", toggleId: "toggle-container-baterias" }
       ];
 
       categories.forEach(cat => {
         const gridEl = document.getElementById(cat.gridId);
-        const sectionEl = document.getElementById(cat.sectionId);
+        const toggleEl = document.getElementById(cat.toggleId);
         const items = filtered.filter(i => i.category === cat.key);
 
         if (items.length === 0) {
-          gridEl.innerHTML = `<div class="empty-state">No hay promociones en esta sección para el filtro aplicado.</div>`;
+          gridEl.innerHTML = `<div class="empty-state">No hay promociones disponibles con el filtro actual.</div>`;
+          toggleEl.innerHTML = "";
+          return;
+        }
+
+        const isExpanded = expandedSections[cat.key];
+        const isSearchingOrFiltering = currentSearch !== "" || currentBrand !== "all";
+
+        // Si se busca o filtra, mostrar todos. De lo contrario, aplicar el límite de 3
+        const visibleItems = (isExpanded || isSearchingOrFiltering) ? items : items.slice(0, 3);
+        gridEl.innerHTML = visibleItems.map(createCardHTML).join("");
+
+        // Control del botón Ver más / Ver menos
+        if (items.length > 3 && !isSearchingOrFiltering) {
+          toggleEl.innerHTML = `
+            <button class="btn-toggle-view" onclick="toggleSection('${cat.key}')">
+              <span>${isExpanded ? "Ocultar modelos" : `Ver todos los modelos (${items.length})`}</span>
+              <span class="icon-arrow">${isExpanded ? "▲" : "▼"}</span>
+            </button>
+          `;
         } else {
-          gridEl.innerHTML = items.map(createCardHTML).join("");
+          toggleEl.innerHTML = "";
         }
       });
     }
 
-    // Filtro por marca
+    // Filtros por marca
     document.querySelectorAll(".filter-btn").forEach(btn => {
       btn.addEventListener("click", () => {
         document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
@@ -529,6 +592,9 @@
       currentSearch = e.target.value.trim().toLowerCase();
       renderSections();
     });
+
+    // Exponer función de toggle en ámbito global
+    window.toggleSection = toggleSection;
 
     // Render inicial
     renderSections();
