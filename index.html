@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cupones y Promociones | Servicio Técnico Especializado</title>
+  <style>
+    :root {
+      --bg-main: #0b0f19;
+      --bg-card: rgba(22, 30, 49, 0.7);
+      --bg-card-hover: rgba(30, 41, 68, 0.9);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent-cyan: #06b6d4;
+      --accent-green: #10b981;
+      --accent-gold: #f59e0b;
+      --accent-red: #ef4444;
+      --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: var(--font-stack);
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      line-height: 1.5;
+      padding: 1.5rem 1rem 3rem;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Controls: Search & Filters */
+    .controls {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      background: var(--bg-card);
+      padding: 1.25rem;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      backdrop-filter: blur(10px);
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: rgba(11, 15, 25, 0.8);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      color: var(--text-main);
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .search-box input:focus {
+      border-color: var(--accent-cyan);
+    }
+
+    .filter-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .filter-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-right: 0.5rem;
+      min-width: 70px;
+    }
+
+    .filter-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      padding: 0.4rem 0.8rem;
+      font-size: 0.85rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .filter-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text-main);
+    }
+
+    .filter-btn.active {
+      background: var(--accent-cyan);
+      border-color: var(--accent-cyan);
+      color: #041016;
+      font-weight: 700;
+    }
+
+    /* Grid */
+    .coupon-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 1.25rem;
+    }
+
+    /* Card */
+    .coupon-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      backdrop-filter: blur(8px);
+      transition: transform 0.2s, border-color 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .coupon-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(6, 182, 212, 0.4);
+      background: var(--bg-card-hover);
+    }
+
+    .card-badges {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.75rem;
+      font-size: 0.75rem;
+    }
+
+    .badge-brand {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .badge-category {
+      background: rgba(6, 182, 212, 0.15);
+      color: var(--accent-cyan);
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .card-quality {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .pricing-container {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      background: rgba(0, 0, 0, 0.2);
+      padding: 0.75rem;
+      border-radius: 8px;
+    }
+
+    .price-regular {
+      font-size: 1rem;
+      text-decoration: line-through;
+      color: var(--text-muted);
+    }
+
+    .price-promo {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--accent-green);
+    }
+
+    .badge-save {
+      margin-left: auto;
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--accent-green);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+    }
+
+    .coupon-code-box {
+      border: 1px dashed var(--accent-gold);
+      background: rgba(245, 158, 11, 0.05);
+      border-radius: 6px;
+      padding: 0.5rem;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .coupon-label {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent-gold);
+      display: block;
+      font-weight: 700;
+    }
+
+    .coupon-code {
+      font-family: monospace;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-main);
+      letter-spacing: 0.1em;
+    }
+
+    .btn-action {
+      background: var(--accent-green);
+      color: #041016;
+      border: none;
+      border-radius: 6px;
+      padding: 0.65rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      display: block;
+      transition: opacity 0.2s;
+    }
+
+    .btn-action:hover {
+      opacity: 0.9;
+    }
+
+    .no-results {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 3rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>Terminal de Cupones & Diagnósticos</h1>
+      <p>Selecciona tu dispositivo para canjear tu precio promocional en taller</p>
+    </header>
+
+    <section class="controls">
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Buscar por modelo (ej. iPhone 13, S23 Ultra, A54)..." />
+      </div>
+
+      <div class="filter-group">
+        <span class="filter-title">Marca:</span>
+        <button class="filter-btn active" data-filter-group="brand" data-value="all">Todas</button>
+        <button class="filter-btn" data-filter-group="brand" data-value="Apple">Apple</button>
+        <button class="filter-btn" data-filter-group="brand" data-value="Samsung">Samsung</button>
+        <button class="filter-btn" data-filter-group="brand" data-value="Honor">Honor</button>
+        <button class="filter-btn" data-filter-group="brand" data-value="Google">Google</button>
+      </div>
+
+      <div class="filter-group">
+        <span class="filter-title">Servicio:</span>
+        <button class="filter-btn active" data-filter-group="category" data-value="all">Todos</button>
+        <button class="filter-btn" data-filter-group="category" data-value="Pantalla">Pantallas</button>
+        <button class="filter-btn" data-filter-group="category" data-value="Batería">Baterías</button>
+        <button class="filter-btn" data-filter-group="category" data-value="Tapa Trasera">Tapas</button>
+      </div>
+    </section>
+
+    <main class="coupon-grid" id="couponGrid"></main>
+  </div>
+
+  <script>
+    // Configuración del taller
+    const WA_NUMBER = "50767006067"; // Modificar con el número oficial de WhatsApp
+
+    // Catálogo unificado con costos, márgenes y cupones calculados
+    const catalog = [
+      // TAPAS IPHONE
+      { id: "t-ip-1", brand: "Apple", model: "iPhone 8 / 8 Plus / X / XR / XS / 11", category: "Tapa Trasera", quality: "Vidrio Big Hole", regular: 40, promo: 30, code: "TAPA10" },
+      { id: "t-ip-2", brand: "Apple", model: "iPhone 11 Pro / 11 Pro Max / 12 mini", category: "Tapa Trasera", quality: "Vidrio Mate Premium", regular: 45, promo: 35, code: "TAPA10" },
+      { id: "t-ip-3", brand: "Apple", model: "iPhone 12 / 12 Pro / 12 Pro Max / 13 / 14", category: "Tapa Trasera", quality: "Cristal Templado Laser", regular: 50, promo: 40, code: "TAPA10" },
+      { id: "t-ip-4", brand: "Apple", model: "iPhone 13 Pro / 13 Pro Max / 14 Pro / 14 Pro Max", category: "Tapa Trasera", quality: "Vidrio Mate Pro", regular: 55, promo: 45, code: "TAPA10" },
+      { id: "t-ip-5", brand: "Apple", model: "iPhone 15 / 15 Pro / 15 Pro Max / 16", category: "Tapa Trasera", quality: "Cristal Removible c/Chasis", regular: 65, promo: 50, code: "TAPA15" },
+      { id: "t-ip-6", brand: "Apple", model: "iPhone 16 Pro / 16 Pro Max", category: "Tapa Trasera", quality: "Titanio / Vidrio Removible", regular: 75, promo: 60, code: "TAPA15" },
+
+      // TAPAS SAMSUNG / HONOR / GOOGLE
+      { id: "t-sm-1", brand: "Samsung", model: "Galaxy S20 / S21 / S22 / S23 / S24 Series", category: "Tapa Trasera", quality: "Vidrio c/Lente Cámara", regular: 45, promo: 32, code: "TAPASAM13" },
+      { id: "t-sm-2", brand: "Samsung", model: "Galaxy A14 / A24 / A34 / A54 / A55", category: "Tapa Trasera", quality: "Policarbonato / Vidrio OEM", regular: 35, promo: 25, code: "TAPASAM10" },
+      { id: "t-hn-1", brand: "Honor", model: "Honor Magic 5 Lite / 6 Lite / 90 / 200", category: "Tapa Trasera", quality: "Original c/Lente", regular: 40, promo: 28, code: "TAPAHO12" },
+      { id: "t-gg-1", brand: "Google", model: "Pixel 6 / 6 Pro / 7 / 7 Pro", category: "Tapa Trasera", quality: "Cristal Visor OEM", regular: 45, promo: 32, code: "TAPAPIX13" },
+
+      // PANTALLAS IPHONE
+      { id: "p-ip-1", brand: "Apple", model: "iPhone X / XS", category: "Pantalla", quality: "OLED Hard/Soft GX", regular: 60, promo: 45, code: "SCRN15" },
+      { id: "p-ip-2", brand: "Apple", model: "iPhone 11", category: "Pantalla", quality: "Incell KD HD+", regular: 40, promo: 30, code: "SCRN10" },
+      { id: "p-ip-3", brand: "Apple", model: "iPhone 11 Pro / 11 Pro Max", category: "Pantalla", quality: "OLED Change IC (Sin Mensaje)", regular: 75, promo: 60, code: "SCRN15" },
+      { id: "p-ip-4", brand: "Apple", model: "iPhone 12 / 12 Pro", category: "Pantalla", quality: "Incell KD", regular: 45, promo: 35, code: "SCRN10" },
+      { id: "p-ip-5", brand: "Apple", model: "iPhone 12 / 12 Pro", category: "Pantalla", quality: "OLED Change IC", regular: 80, promo: 65, code: "SCRN15" },
+      { id: "p-ip-6", brand: "Apple", model: "iPhone 13", category: "Pantalla", quality: "OLED Change IC", regular: 85, promo: 70, code: "SCRN15" },
+      { id: "p-ip-7", brand: "Apple", model: "iPhone 13 Pro / 13 Pro Max", category: "Pantalla", quality: "OLED 120Hz Change IC", regular: 110, promo: 90, code: "SCRN20" },
+      { id: "p-ip-8", brand: "Apple", model: "iPhone 14 Pro / 14 Pro Max", category: "Pantalla", quality: "OLED Dynamic Island Change IC", regular: 130, promo: 105, code: "SCRN25" },
+      { id: "p-ip-9", brand: "Apple", model: "iPhone 15 Pro / 15 Pro Max", category: "Pantalla", quality: "OLED GX / DD Change IC", regular: 165, promo: 135, code: "SCRN30" },
+
+      // PANTALLAS SAMSUNG
+      { id: "p-sm-1", brand: "Samsung", model: "Galaxy A04 / A05 / A06", category: "Pantalla", quality: "Original sin Marco", regular: 35, promo: 25, code: "SAM10" },
+      { id: "p-sm-2", brand: "Samsung", model: "Galaxy A14 / A15 / A16", category: "Pantalla", quality: "Incell c/Marco", regular: 42, promo: 30, code: "SAM12" },
+      { id: "p-sm-3", brand: "Samsung", model: "Galaxy A34 / A35 / A54 / A55", category: "Pantalla", quality: "OLED Big Screen c/Marco", regular: 75, promo: 60, code: "SAM15" },
+      { id: "p-sm-4", brand: "Samsung", model: "Galaxy S20 FE / S21 FE", category: "Pantalla", quality: "OLED c/Marco", regular: 70, promo: 55, code: "SAM15" },
+      { id: "p-sm-5", brand: "Samsung", model: "Galaxy S22 Ultra / S23 Ultra", category: "Pantalla", quality: "Incell Flat c/Marco", regular: 95, promo: 75, code: "SAM20" },
+      { id: "p-sm-6", brand: "Samsung", model: "Galaxy S22 Ultra / S23 Ultra", category: "Pantalla", quality: "OLED Curved 1:1 c/Marco", regular: 140, promo: 115, code: "SAM25" },
+
+      // PANTALLAS HONOR & GOOGLE
+      { id: "p-hn-1", brand: "Honor", model: "Honor X7 / X8 / X9", category: "Pantalla", quality: "Original LCD", regular: 38, promo: 28, code: "HON10" },
+      { id: "p-hn-2", brand: "Honor", model: "Honor Magic 5 Lite / 6 Lite", category: "Pantalla", quality: "Curved OLED c/Marco", regular: 75, promo: 62, code: "HON13" },
+      { id: "p-gg-1", brand: "Google", model: "Pixel 6 / 6A / 7", category: "Pantalla", quality: "OLED Original Spec", regular: 85, promo: 70, code: "PIX15" },
+
+      // BATERÍAS IPHONE
+      { id: "b-ip-1", brand: "Apple", model: "iPhone 8 / X / XR / XS / 11", category: "Batería", quality: "Alta Capacidad OEM", regular: 35, promo: 25, code: "BAT10" },
+      { id: "b-ip-2", brand: "Apple", model: "iPhone 12 / 12 Pro / 12 Pro Max", category: "Batería", quality: "Diagnóstico (% iOS 18+ sin soldar)", regular: 55, promo: 40, code: "BATI15" },
+      { id: "b-ip-3", brand: "Apple", model: "iPhone 13 / 13 Pro / 13 Pro Max", category: "Batería", quality: "Diagnóstico (% iOS 18+ sin soldar)", regular: 60, promo: 45, code: "BATI15" },
+      { id: "b-ip-4", brand: "Apple", model: "iPhone 14 / 14 Pro / 14 Pro Max", category: "Batería", quality: "Diagnóstico (% iOS 18+ sin soldar)", regular: 65, promo: 48, code: "BATI17" },
+      { id: "b-ip-5", brand: "Apple", model: "iPhone 15 / 15 Pro / 15 Pro Max", category: "Batería", quality: "Diagnóstico (% iOS 18+ sin soldar)", regular: 70, promo: 50, code: "BATI20" },
+
+      // BATERÍAS SAMSUNG / ANDROID
+      { id: "b-sm-1", brand: "Samsung", model: "Galaxy A Series (A10 - A55)", category: "Batería", quality: "Original Service Pack Spec", regular: 38, promo: 26, code: "BATSAM12" },
+      { id: "b-sm-2", brand: "Samsung", model: "Galaxy S20 / S21 / S22 / S23 Series", category: "Batería", quality: "Original Spec Calibrada", regular: 45, promo: 32, code: "BATSAM13" },
+      { id: "b-sm-3", brand: "Samsung", model: "Galaxy Z Flip 3 / 4 / 5", category: "Batería", quality: "Dual Cell Pack Original", regular: 60, promo: 45, code: "BATFLIP15" },
+      { id: "b-hn-1", brand: "Honor", model: "Honor Magic Series / X Series", category: "Batería", quality: "Original Spec", regular: 38, promo: 27, code: "BATHON11" },
+      { id: "b-gg-1", brand: "Google", model: "Pixel 6 / 6 Pro / 7 / 7 Pro", category: "Batería", quality: "OEM Alta Densidad", regular: 48, promo: 35, code: "BATPIX13" }
+    ];
+
+    let currentFilters = {
+      brand: "all",
+      category: "all",
+      search: ""
+    };
+
+    const couponGrid = document.getElementById("couponGrid");
+    const searchInput = document.getElementById("searchInput");
+
+    function renderCards() {
+      const filtered = catalog.filter(item => {
+        const matchBrand = currentFilters.brand === "all" || item.brand === currentFilters.brand;
+        const matchCategory = currentFilters.category === "all" || item.category === currentFilters.category;
+        const matchSearch = currentFilters.search === "" || 
+          item.model.toLowerCase().includes(currentFilters.search) || 
+          item.quality.toLowerCase().includes(currentFilters.search) ||
+          item.brand.toLowerCase().includes(currentFilters.search);
+
+        return matchBrand && matchCategory && matchSearch;
+      });
+
+      if (filtered.length === 0) {
+        couponGrid.innerHTML = `<div class="no-results">No se encontraron cupones con los filtros aplicados.</div>`;
+        return;
+      }
+
+      couponGrid.innerHTML = filtered.map(item => {
+        const savings = item.regular - item.promo;
+        const waMessage = encodeURIComponent(`Hola! Quiero canjear el cupón *${item.code}* para ${item.category} de *${item.brand} ${item.model}* (${item.quality}) por *$${item.promo}* (Ahorro: $${savings}).`);
+        const waLink = `https://wa.me/${WA_NUMBER}?text=${waMessage}`;
+
+        return `
+          <article class="coupon-card">
+            <div>
+              <div class="card-badges">
+                <span class="badge-brand">${item.brand}</span>
+                <span class="badge-category">${item.category}</span>
+              </div>
+              <h2 class="card-title">${item.model}</h2>
+              <p class="card-quality">${item.quality}</p>
+            </div>
+
+            <div>
+              <div class="pricing-container">
+                <span class="price-regular">$${item.regular}</span>
+                <span class="price-promo">$${item.promo}</span>
+                <span class="badge-save">AHORRA $${savings}</span>
+              </div>
+
+              <div class="coupon-code-box">
+                <span class="coupon-label">Código de Descuento</span>
+                <span class="coupon-code">${item.code}</span>
+              </div>
+
+              <a href="${waLink}" target="_blank" rel="noopener noreferrer" class="btn-action">
+                Reclamar vía WhatsApp
+              </a>
+            </div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    // Event Listeners Filtros
+    document.querySelectorAll(".filter-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const group = btn.getAttribute("data-filter-group");
+        const val = btn.getAttribute("data-value");
+
+        document.querySelectorAll(`.filter-btn[data-filter-group="${group}"]`).forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        currentFilters[group] = val;
+        renderCards();
+      });
+    });
+
+    // Event Listener Buscador
+    searchInput.addEventListener("input", (e) => {
+      currentFilters.search = e.target.value.trim().toLowerCase();
+      renderCards();
+    });
+
+    // Inicialización
+    renderCards();
+  </script>
+</body>
+</html>
