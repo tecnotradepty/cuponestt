@@ -6,13 +6,15 @@
   <title>TecnoTrade | Cupones & Promociones</title>
   <style>
     :root {
-      --bg-main: #0b0f19;
-      --bg-card: rgba(22, 30, 49, 0.7);
-      --bg-card-hover: rgba(30, 41, 68, 0.9);
-      --border-color: rgba(255, 255, 255, 0.08);
+      --bg-main: #060911;
+      --bg-card: rgba(13, 20, 38, 0.85);
+      --bg-card-hover: rgba(19, 30, 56, 0.95);
+      --border-sketch: #38bdf8;
+      --border-subtle: rgba(56, 189, 248, 0.25);
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
-      --accent-cyan: #06b6d4;
+      --accent-cyan: #38bdf8;
+      --accent-blue: #0284c7;
       --accent-green: #10b981;
       --accent-gold: #f59e0b;
       --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -27,6 +29,9 @@
 
     body {
       background-color: var(--bg-main);
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.05) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(2, 132, 199, 0.05) 0%, transparent 20%);
       color: var(--text-main);
       line-height: 1.5;
       padding: 1.5rem 1rem 4rem;
@@ -43,33 +48,49 @@
       margin-bottom: 2rem;
     }
 
+    .validity-banner {
+      display: inline-block;
+      background: rgba(245, 158, 11, 0.1);
+      border: 2px dashed var(--accent-gold);
+      color: var(--accent-gold);
+      padding: 0.4rem 1.2rem;
+      border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .brand-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 1rem;
+    }
+
+    .brand-logo {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 255px 25px 225px 25px / 25px 225px 25px 255px;
+      border: 2px solid var(--accent-cyan);
+      box-shadow: 3px 3px 0px rgba(56, 189, 248, 0.4);
+      background: #000;
+    }
+
     .brand-title {
       font-size: 2.4rem;
       font-weight: 800;
       letter-spacing: -0.03em;
       color: var(--text-main);
-      margin-bottom: 0.2rem;
     }
 
     .brand-subtitle {
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-weight: 600;
       color: var(--accent-cyan);
-      margin-bottom: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .validity-banner {
-      display: inline-block;
-      background: rgba(245, 158, 11, 0.15);
-      border: 1px solid var(--accent-gold);
-      color: var(--accent-gold);
-      padding: 0.4rem 1rem;
-      border-radius: 50px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
@@ -79,18 +100,17 @@
       justify-content: center;
       flex-wrap: wrap;
       gap: 0.75rem;
-      margin-bottom: 1.5rem;
+      margin-top: 0.5rem;
     }
 
     .store-link-btn {
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--border-color);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1.5px solid var(--border-subtle);
+      border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
       color: var(--text-muted);
-      padding: 0.4rem 0.9rem;
-      border-radius: 8px;
+      padding: 0.45rem 1rem;
       font-size: 0.85rem;
       text-decoration: none;
       font-weight: 600;
@@ -98,12 +118,13 @@
     }
 
     .store-link-btn:hover {
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(56, 189, 248, 0.1);
       color: var(--text-main);
-      border-color: rgba(255, 255, 255, 0.2);
+      border-color: var(--accent-cyan);
+      box-shadow: 2px 2px 0px var(--accent-cyan);
     }
 
-    /* Controls */
+    /* Controles y Búsqueda */
     .controls {
       display: flex;
       flex-direction: column;
@@ -111,25 +132,26 @@
       margin-bottom: 2.5rem;
       background: var(--bg-card);
       padding: 1.25rem;
-      border-radius: 12px;
-      border: 1px solid var(--border-color);
-      backdrop-filter: blur(10px);
+      border: 2px solid var(--border-subtle);
+      border-radius: 255px 25px 225px 25px / 25px 225px 25px 255px;
+      box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
     }
 
     .search-box input {
       width: 100%;
       padding: 0.75rem 1rem;
-      background: rgba(11, 15, 25, 0.8);
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
+      background: rgba(6, 9, 17, 0.8);
+      border: 1.5px solid var(--border-subtle);
+      border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
       color: var(--text-main);
       font-size: 1rem;
       outline: none;
-      transition: border-color 0.2s;
+      transition: all 0.2s;
     }
 
     .search-box input:focus {
       border-color: var(--accent-cyan);
+      box-shadow: 2px 2px 0px var(--accent-cyan);
     }
 
     .filter-group {
@@ -148,18 +170,19 @@
     }
 
     .filter-btn {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--border-color);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1.5px solid var(--border-subtle);
+      border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
       color: var(--text-muted);
-      padding: 0.4rem 0.85rem;
+      padding: 0.4rem 0.9rem;
       font-size: 0.85rem;
-      border-radius: 6px;
+      font-weight: 600;
       cursor: pointer;
       transition: all 0.2s;
     }
 
     .filter-btn:hover {
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(56, 189, 248, 0.1);
       color: var(--text-main);
     }
 
@@ -168,9 +191,10 @@
       border-color: var(--accent-cyan);
       color: #041016;
       font-weight: 700;
+      box-shadow: 2px 2px 0px rgba(255, 255, 255, 0.2);
     }
 
-    /* Sections */
+    /* Secciones */
     .catalog-section {
       margin-bottom: 3.5rem;
     }
@@ -180,48 +204,50 @@
       align-items: center;
       gap: 0.75rem;
       margin-bottom: 1.25rem;
-      border-bottom: 1px solid var(--border-color);
+      border-bottom: 2px dashed var(--border-subtle);
       padding-bottom: 0.75rem;
     }
 
     .section-header h2 {
-      font-size: 1.5rem;
-      font-weight: 700;
+      font-size: 1.6rem;
+      font-weight: 800;
       color: var(--text-main);
     }
 
     .section-badge {
-      background: rgba(6, 182, 212, 0.15);
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid var(--accent-cyan);
       color: var(--accent-cyan);
       font-size: 0.75rem;
       font-weight: 700;
       padding: 0.2rem 0.6rem;
-      border-radius: 4px;
+      border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
       text-transform: uppercase;
     }
 
     .coupon-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
-      gap: 1.25rem;
+      gap: 1.5rem;
     }
 
-    /* Card */
+    /* Estilo Sketch Cards */
     .coupon-card {
       background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
+      border: 2px solid var(--border-subtle);
+      border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
       padding: 1.25rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      backdrop-filter: blur(8px);
-      transition: transform 0.2s, border-color 0.2s;
+      box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.4);
+      transition: all 0.2s ease;
     }
 
     .coupon-card:hover {
-      transform: translateY(-2px);
-      border-color: rgba(6, 182, 212, 0.4);
+      transform: translateY(-3px);
+      border-color: var(--accent-cyan);
+      box-shadow: 5px 5px 0px var(--accent-cyan);
       background: var(--bg-card-hover);
     }
 
@@ -233,45 +259,46 @@
       display: flex;
       justify-content: space-between;
       margin-bottom: 0.5rem;
-      font-size: 0.75rem;
     }
 
     .badge-brand {
       background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
       padding: 0.2rem 0.5rem;
-      border-radius: 4px;
+      border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
       font-weight: 600;
+      font-size: 0.75rem;
       color: var(--text-muted);
     }
 
     .badge-quality {
       font-weight: 700;
       padding: 0.2rem 0.5rem;
-      border-radius: 4px;
+      border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
       text-transform: uppercase;
       font-size: 0.7rem;
     }
 
     .quality-incell {
-      background: rgba(148, 163, 184, 0.15);
+      background: rgba(148, 163, 184, 0.1);
       color: #94a3b8;
-      border: 1px solid rgba(148, 163, 184, 0.3);
+      border: 1px dashed #94a3b8;
     }
 
     .quality-oled {
-      background: rgba(6, 182, 212, 0.15);
+      background: rgba(56, 189, 248, 0.1);
       color: var(--accent-cyan);
-      border: 1px solid rgba(6, 182, 212, 0.3);
+      border: 1px dashed var(--accent-cyan);
     }
 
     .quality-original {
-      background: rgba(16, 185, 129, 0.15);
+      background: rgba(16, 185, 129, 0.1);
       color: var(--accent-green);
-      border: 1px solid rgba(16, 185, 129, 0.3);
+      border: 1px dashed var(--accent-green);
     }
 
     .card-title {
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       font-weight: 700;
       color: var(--text-main);
     }
@@ -281,9 +308,10 @@
       align-items: baseline;
       gap: 0.75rem;
       margin-bottom: 1rem;
-      background: rgba(0, 0, 0, 0.25);
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--border-subtle);
+      border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
       padding: 0.75rem;
-      border-radius: 8px;
     }
 
     .price-regular {
@@ -293,7 +321,7 @@
     }
 
     .price-promo {
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       font-weight: 800;
       color: var(--accent-green);
     }
@@ -301,17 +329,18 @@
     .badge-save {
       margin-left: auto;
       background: rgba(16, 185, 129, 0.15);
+      border: 1px solid var(--accent-green);
       color: var(--accent-green);
       font-size: 0.75rem;
       font-weight: 700;
       padding: 0.2rem 0.5rem;
-      border-radius: 4px;
+      border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
     }
 
     .coupon-code-box {
-      border: 1px dashed var(--accent-gold);
+      border: 1.5px dashed var(--accent-gold);
       background: rgba(245, 158, 11, 0.05);
-      border-radius: 6px;
+      border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
       padding: 0.5rem;
       text-align: center;
       margin-bottom: 0.75rem;
@@ -337,23 +366,26 @@
     .btn-action {
       background: var(--accent-green);
       color: #041016;
-      border: none;
-      border-radius: 6px;
+      border: 2px solid #041016;
+      border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
       padding: 0.65rem;
-      font-weight: 700;
+      font-weight: 800;
       cursor: pointer;
       text-align: center;
       text-decoration: none;
       display: block;
-      transition: opacity 0.2s;
+      transition: all 0.2s;
       font-size: 0.9rem;
+      box-shadow: 2px 2px 0px #041016;
     }
 
     .btn-action:hover {
-      opacity: 0.9;
+      opacity: 0.95;
+      transform: translate(-1px, -1px);
+      box-shadow: 3px 3px 0px #041016;
     }
 
-    /* Toggle Button */
+    /* Botón Toggle de Sección */
     .toggle-container {
       display: flex;
       justify-content: center;
@@ -361,23 +393,25 @@
     }
 
     .btn-toggle-view {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--border-color);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1.5px solid var(--accent-cyan);
       color: var(--accent-cyan);
       padding: 0.6rem 1.4rem;
       font-size: 0.9rem;
       font-weight: 700;
-      border-radius: 50px;
+      border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
       transition: all 0.2s ease;
+      box-shadow: 2px 2px 0px var(--accent-cyan);
     }
 
     .btn-toggle-view:hover {
-      background: rgba(6, 182, 212, 0.15);
-      border-color: var(--accent-cyan);
+      background: rgba(56, 189, 248, 0.15);
+      transform: translate(-1px, -1px);
+      box-shadow: 3px 3px 0px var(--accent-cyan);
     }
 
     .empty-state {
@@ -394,22 +428,31 @@
   <div class="container">
     <header>
       <div class="validity-banner">Ofertas válidas del 15 de septiembre al 31 de octubre</div>
-      <h1 class="brand-title">TecnoTrade</h1>
-      <p class="brand-subtitle">Técnicos de la tienda Mobile Hub</p>
       
+      <div class="brand-header">
+        <img 
+          src="https://raw.githubusercontent.com/tecnotradepty/cuponestt/b678d6fe731eb2b6aaed1807655be55ad45aa0a0/imagenes/768420594_18089021243367758_8129196020523341355_n.jpg" 
+          alt="TecnoTrade Logo" 
+          class="brand-logo" 
+          loading="eager"
+        />
+        <h1 class="brand-title">TecnoTrade</h1>
+        <p class="brand-subtitle">Técnicos de la tienda Mobile Hub</p>
+      </div>
+
       <div class="store-links">
         <a href="https://www.instagram.com/tecnotradepty/" target="_blank" rel="noopener noreferrer" class="store-link-btn">
           Instagram: @tecnotradepty
         </a>
-      <a href="map.html" class="store-link-btn">
-  Ver Ubicación en Maps
-</a>
+        <a href="map.html" class="store-link-btn">
+          Ver Ubicación en Maps
+        </a>
       </div>
     </header>
 
     <section class="controls">
       <div class="search-box">
-        <input type="text" id="searchInput" placeholder="Buscar por modelo (ej. iPhone 13, Galaxy S23, Pixel 7 Pro)..." />
+        <input type="text" id="searchInput" placeholder="Buscar por modelo (ej. iPhone 13, Galaxy S23, Pixel 7 Pro, A54)..." />
       </div>
 
       <div class="filter-group">
@@ -422,7 +465,7 @@
       </div>
     </section>
 
-    <!-- SECCIÓN PANTALLAS -->
+    <!-- PANTALLAS -->
     <section class="catalog-section" id="section-pantallas">
       <div class="section-header">
         <h2>Pantallas</h2>
@@ -432,7 +475,7 @@
       <div class="toggle-container" id="toggle-container-pantallas"></div>
     </section>
 
-    <!-- SECCIÓN TAPAS TRASERAS -->
+    <!-- TAPAS TRASERAS -->
     <section class="catalog-section" id="section-tapas">
       <div class="section-header">
         <h2>Tapas Traseras</h2>
@@ -442,7 +485,7 @@
       <div class="toggle-container" id="toggle-container-tapas"></div>
     </section>
 
-    <!-- SECCIÓN BATERÍAS -->
+    <!-- BATERÍAS -->
     <section class="catalog-section" id="section-baterias">
       <div class="section-header">
         <h2>Baterías</h2>
@@ -457,7 +500,7 @@
     const WA_NUMBER = "50768529324";
 
     const catalog = [
-      /* ==================== PANTALLAS ==================== */
+      /* PANTALLAS */
       { id: "p-1", category: "Pantallas", brand: "Apple", model: "iPhone X / XS", quality: "OLED", regular: 60, promo: 45, code: "SCRN15" },
       { id: "p-2", category: "Pantallas", brand: "Apple", model: "iPhone 11", quality: "Incell", regular: 40, promo: 30, code: "SCRN10" },
       { id: "p-3", category: "Pantallas", brand: "Apple", model: "iPhone 11 Pro / 11 Pro Max", quality: "OLED", regular: 75, promo: 60, code: "SCRN15" },
@@ -484,7 +527,7 @@
       { id: "p-21", category: "Pantallas", brand: "Google", model: "Pixel 7 Pro", quality: "OLED", regular: 95, promo: 78, code: "PIXPRO17" },
       { id: "p-22", category: "Pantallas", brand: "Google", model: "Pixel 8 Pro", quality: "OLED", regular: 105, promo: 85, code: "PIXPRO20" },
 
-      /* ==================== TAPAS TRASERAS ==================== */
+      /* TAPAS TRASERAS */
       { id: "t-1", category: "Tapas Traseras", brand: "Apple", model: "iPhone 8 / 8 Plus / X / XR / XS / 11", quality: "Original", regular: 40, promo: 30, code: "TAPA10" },
       { id: "t-2", category: "Tapas Traseras", brand: "Apple", model: "iPhone 11 Pro / 11 Pro Max / 12 mini", quality: "Original", regular: 45, promo: 35, code: "TAPA10" },
       { id: "t-3", category: "Tapas Traseras", brand: "Apple", model: "iPhone 12 / 12 Pro / 12 Pro Max / 13 / 14", quality: "Original", regular: 50, promo: 40, code: "TAPA10" },
@@ -499,7 +542,7 @@
 
       { id: "t-10", category: "Tapas Traseras", brand: "Google", model: "Pixel 6 / 6 Pro / 7 / 7 Pro", quality: "Original", regular: 45, promo: 32, code: "TAPAPIX13" },
 
-      /* ==================== BATERÍAS ==================== */
+      /* BATERÍAS */
       { id: "b-1", category: "Baterías", brand: "Apple", model: "iPhone 8 / X / XR / XS / 11", quality: "Original", regular: 35, promo: 25, code: "BAT10" },
       { id: "b-2", category: "Baterías", brand: "Apple", model: "iPhone 12 / 12 Pro / 12 Pro Max", quality: "Original", regular: 55, promo: 40, code: "BATI15" },
       { id: "b-3", category: "Baterías", brand: "Apple", model: "iPhone 13 / 13 Pro / 13 Pro Max", quality: "Original", regular: 60, promo: 45, code: "BATI15" },
@@ -591,7 +634,7 @@
         const items = filtered.filter(i => i.category === cat.key);
 
         if (items.length === 0) {
-          gridEl.innerHTML = `<div class="empty-state">No hay promociones disponibles con el filtro actual.</div>`;
+          gridEl.innerHTML = `<div class="empty-state">No hay modelos disponibles bajo los filtros aplicados.</div>`;
           toggleEl.innerHTML = "";
           return;
         }
@@ -615,7 +658,6 @@
       });
     }
 
-    // Filtros por marca
     document.querySelectorAll(".filter-btn").forEach(btn => {
       btn.addEventListener("click", () => {
         document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
@@ -625,7 +667,6 @@
       });
     });
 
-    // Filtro por búsqueda
     document.getElementById("searchInput").addEventListener("input", (e) => {
       currentSearch = e.target.value.trim().toLowerCase();
       renderSections();
@@ -633,7 +674,6 @@
 
     window.toggleSection = toggleSection;
 
-    // Render inicial
     renderSections();
   </script>
 </body>
