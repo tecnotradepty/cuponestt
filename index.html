@@ -188,9 +188,17 @@
     .t-category { font-size: 0.75rem; font-weight: 700; color: var(--accent-cyan); text-transform: uppercase; }
 
     .t-body { margin-bottom: 1rem; }
-    .t-model { font-size: 1.35rem; font-weight: 800; line-height: 1.2; margin-bottom: 0.4rem; }
     
-    .t-quality { font-size: 0.75rem; font-weight: 700; padding: 0.25rem 0.6rem; border-radius: 6px; text-transform: uppercase; }
+    /* MODIFICACIÓN: Fuente más pequeña para abarcar todos los modelos */
+    .t-model { 
+      font-size: 0.95rem; 
+      font-weight: 700; 
+      line-height: 1.35; 
+      margin-bottom: 0.6rem; 
+      color: var(--text-main);
+    }
+    
+    .t-quality { font-size: 0.75rem; font-weight: 700; padding: 0.25rem 0.6rem; border-radius: 6px; text-transform: uppercase; display: inline-block;}
     .qty-incell { background: rgba(148,163,184,0.15); color: #cbd5e1; border: 1px solid rgba(148,163,184,0.3); }
     .qty-oled { background: rgba(56,189,248,0.15); color: var(--accent-cyan); border: 1px solid rgba(56,189,248,0.3); }
     .qty-orig { background: rgba(52,211,153,0.15); color: var(--accent-green); border: 1px solid rgba(52,211,153,0.3); }
@@ -237,9 +245,8 @@
     .empty-state { text-align: center; padding: 2rem; color: var(--text-muted); font-style: italic; }
 
     /* =========================================
-       VISTAS SECUNDARIAS
+       VISTA UBICACIÓN
        ========================================= */
-    .coming-soon { text-align: center; padding: 3rem 1rem; }
     .map-container { width: 100%; height: 350px; border-radius: 12px; overflow: hidden; margin-top: 1rem; }
     .map-container iframe { width: 100%; height: 100%; border: none; }
     .btn-maps { display: inline-block; background: var(--accent-cyan); color: #000; padding: 0.8rem 1.5rem; border-radius: 10px; font-weight: 700; text-decoration: none; margin-top: 1rem; }
@@ -261,32 +268,21 @@
       <a href="https://www.instagram.com/tecnotradepty/" target="_blank" class="btn-instagram">Instagram</a>
     </header>
 
-    <!-- NAVEGACIÓN -->
+    <!-- NAVEGACIÓN (Solo Ofertas y Ubicación) -->
     <nav class="segmented-control">
-      <button data-target="view-telefonos">Teléfonos</button>
       <button data-target="view-ofertas" class="active">Ofertas</button>
       <button data-target="view-ubicacion">Ubicación</button>
     </nav>
 
     <!-- =========================================
-         VISTA 1: TELÉFONOS 
-         ========================================= -->
-    <section id="view-telefonos" class="view-section">
-      <div class="glass-card coming-soon">
-        <h2 style="margin-bottom: 10px; color: var(--accent-cyan);">Catálogo de Teléfonos</h2>
-        <p>Los equipos en venta se cargarán aquí pronto desde Google Sheets.</p>
-      </div>
-    </section>
-
-    <!-- =========================================
-         VISTA 2: OFERTAS (CUPONES TICKET)
+         VISTA 1: OFERTAS (CUPONES TICKET)
          ========================================= -->
     <section id="view-ofertas" class="view-section active">
       <span class="validity-banner">Válido del 15 de Sept. al 31 de Octubre</span>
       
       <div class="controls glass-card">
         <div class="search-box">
-          <input type="text" id="searchInput" placeholder="Busca tu modelo (ej. iPhone 13, A54)..." />
+          <input type="text" id="searchInput" placeholder="Busca tu modelo específico (ej. iPhone 13 Pro Max)..." />
         </div>
         <div class="filter-group" id="filterGroup">
           <span style="font-weight:700; color:var(--text-muted); margin-right:5px;">Marca:</span>
@@ -321,7 +317,7 @@
     </section>
 
     <!-- =========================================
-         VISTA 3: UBICACIÓN
+         VISTA 2: UBICACIÓN
          ========================================= -->
     <section id="view-ubicacion" class="view-section">
       <div class="glass-card" style="padding: 1.5rem;">
@@ -338,7 +334,7 @@
   </div>
 
   <script>
-    // 1. NAVEGACIÓN SPA
+    // NAVEGACIÓN SPA
     const navButtons = document.querySelectorAll('.segmented-control button');
     const views = document.querySelectorAll('.view-section');
 
@@ -352,57 +348,56 @@
       });
     });
 
-    // 2. SISTEMA DE CUPONES
     const WA_BASE_URL = "https://wa.me/50768529324?text=";
     
-    // CATÁLOGO COMPLETO ORDENADO POR PRECIO PROMO (.p)
+    // CATÁLOGO CON MODELOS 100% ESPECIFICADOS
     const catalog = [
       // PANTALLAS
-      { c: "Pantallas", b: "Samsung", m: "Galaxy A04 / A05 / A06", q: "Original", r: 35, p: 25, cd: "SAM10" },
-      { c: "Pantallas", b: "Honor", m: "Honor X7 / X8 / X9", q: "Original", r: 38, p: 28, cd: "HON10" },
+      { c: "Pantallas", b: "Samsung", m: "Galaxy A04, A04s, A05, A05s, A06", q: "Original", r: 35, p: 25, cd: "SAM10" },
+      { c: "Pantallas", b: "Honor", m: "Honor X7, X7a, X7b, X8, X8a, X8b, X9", q: "Original", r: 38, p: 28, cd: "HON10" },
       { c: "Pantallas", b: "Apple", m: "iPhone 11", q: "Incell", r: 40, p: 30, cd: "SCRN10" },
-      { c: "Pantallas", b: "Samsung", m: "Galaxy A14 / A15 / A16", q: "Incell", r: 42, p: 30, cd: "SAM12" },
-      { c: "Pantallas", b: "Apple", m: "iPhone 12 / 12 Pro", q: "Incell", r: 45, p: 35, cd: "SCRN10" },
+      { c: "Pantallas", b: "Samsung", m: "Galaxy A14, A15, A16", q: "Incell", r: 42, p: 30, cd: "SAM12" },
+      { c: "Pantallas", b: "Apple", m: "iPhone 12, 12 Pro", q: "Incell", r: 45, p: 35, cd: "SCRN10" },
       { c: "Pantallas", b: "Apple", m: "iPhone 13", q: "Incell", r: 50, p: 38, cd: "SCRN12" },
-      { c: "Pantallas", b: "Apple", m: "iPhone X / XS", q: "OLED", r: 60, p: 45, cd: "SCRN15" },
-      { c: "Pantallas", b: "Samsung", m: "Galaxy S20 FE / S21 FE", q: "OLED", r: 70, p: 55, cd: "SAM15" },
-      { c: "Pantallas", b: "Apple", m: "iPhone 11 Pro / Pro Max", q: "OLED", r: 75, p: 60, cd: "SCRN15" },
-      { c: "Pantallas", b: "Samsung", m: "Galaxy A34 / A35 / A54 / A55", q: "OLED", r: 75, p: 60, cd: "SAM15" },
-      { c: "Pantallas", b: "Honor", m: "Honor Magic 5 Lite / 6 Lite", q: "OLED", r: 75, p: 62, cd: "HON13" },
-      { c: "Pantallas", b: "Apple", m: "iPhone 12 / 12 Pro", q: "OLED", r: 80, p: 65, cd: "SCRN15" },
+      { c: "Pantallas", b: "Apple", m: "iPhone X, XR, XS", q: "OLED", r: 60, p: 45, cd: "SCRN15" },
+      { c: "Pantallas", b: "Samsung", m: "Galaxy S20 FE, S21 FE", q: "OLED", r: 70, p: 55, cd: "SAM15" },
+      { c: "Pantallas", b: "Apple", m: "iPhone 11 Pro, 11 Pro Max", q: "OLED", r: 75, p: 60, cd: "SCRN15" },
+      { c: "Pantallas", b: "Samsung", m: "Galaxy A34, A35, A54, A55", q: "OLED", r: 75, p: 60, cd: "SAM15" },
+      { c: "Pantallas", b: "Honor", m: "Honor Magic 5 Lite, Magic 6 Lite", q: "OLED", r: 75, p: 62, cd: "HON13" },
+      { c: "Pantallas", b: "Apple", m: "iPhone 12, 12 Pro", q: "OLED", r: 80, p: 65, cd: "SCRN15" },
       { c: "Pantallas", b: "Apple", m: "iPhone 13", q: "OLED", r: 85, p: 70, cd: "SCRN15" },
-      { c: "Pantallas", b: "Google", m: "Pixel 6 / 6A / 7", q: "OLED", r: 85, p: 70, cd: "PIX15" },
-      { c: "Pantallas", b: "Samsung", m: "Galaxy S22 Ultra / S23 Ultra", q: "Incell", r: 95, p: 75, cd: "SAM20" },
-      { c: "Pantallas", b: "Google", m: "Pixel 6 Pro / 7 Pro", q: "OLED", r: 95, p: 78, cd: "PIXPRO17" },
+      { c: "Pantallas", b: "Google", m: "Pixel 6, 6A, 7", q: "OLED", r: 85, p: 70, cd: "PIX15" },
+      { c: "Pantallas", b: "Samsung", m: "Galaxy S22 Ultra, S23 Ultra", q: "Incell", r: 95, p: 75, cd: "SAM20" },
+      { c: "Pantallas", b: "Google", m: "Pixel 6 Pro, 7 Pro", q: "OLED", r: 95, p: 78, cd: "PIXPRO17" },
       { c: "Pantallas", b: "Google", m: "Pixel 8 Pro", q: "OLED", r: 105, p: 85, cd: "PIXPRO20" },
-      { c: "Pantallas", b: "Apple", m: "iPhone 13 Pro / 13 Pro Max", q: "OLED", r: 110, p: 90, cd: "SCRN20" },
-      { c: "Pantallas", b: "Apple", m: "iPhone 14 Pro / 14 Pro Max", q: "OLED", r: 130, p: 105, cd: "SCRN25" },
-      { c: "Pantallas", b: "Samsung", m: "Galaxy S22 Ultra / S23 Ultra", q: "OLED", r: 140, p: 115, cd: "SAM25" },
-      { c: "Pantallas", b: "Apple", m: "iPhone 15 Pro / 15 Pro Max", q: "OLED", r: 165, p: 135, cd: "SCRN30" },
+      { c: "Pantallas", b: "Apple", m: "iPhone 13 Pro, 13 Pro Max", q: "OLED", r: 110, p: 90, cd: "SCRN20" },
+      { c: "Pantallas", b: "Apple", m: "iPhone 14 Pro, 14 Pro Max", q: "OLED", r: 130, p: 105, cd: "SCRN25" },
+      { c: "Pantallas", b: "Samsung", m: "Galaxy S22 Ultra, S23 Ultra", q: "OLED", r: 140, p: 115, cd: "SAM25" },
+      { c: "Pantallas", b: "Apple", m: "iPhone 15 Pro, 15 Pro Max", q: "OLED", r: 165, p: 135, cd: "SCRN30" },
 
       // TAPAS TRASERAS
-      { c: "Tapas Traseras", b: "Samsung", m: "Galaxy A14 a A55", q: "Original", r: 35, p: 25, cd: "TAPASAM10" },
-      { c: "Tapas Traseras", b: "Honor", m: "Magic 5/6 Lite / 90 / 200", q: "Original", r: 40, p: 28, cd: "TAPAHO12" },
-      { c: "Tapas Traseras", b: "Apple", m: "iPhone 8 a 11", q: "Original", r: 40, p: 30, cd: "TAPA10" },
-      { c: "Tapas Traseras", b: "Samsung", m: "Galaxy S20 a S24 Series", q: "Original", r: 45, p: 32, cd: "TAPASAM13" },
-      { c: "Tapas Traseras", b: "Google", m: "Pixel 6 a 7 Pro", q: "Original", r: 45, p: 32, cd: "TAPAPIX13" },
-      { c: "Tapas Traseras", b: "Apple", m: "iPhone 11 Pro a 12 mini", q: "Original", r: 45, p: 35, cd: "TAPA10" },
-      { c: "Tapas Traseras", b: "Apple", m: "iPhone 12 a 14", q: "Original", r: 50, p: 40, cd: "TAPA10" },
-      { c: "Tapas Traseras", b: "Apple", m: "iPhone 13 Pro a 14 Pro Max", q: "Original", r: 55, p: 45, cd: "TAPA10" },
-      { c: "Tapas Traseras", b: "Apple", m: "iPhone 15 a 16", q: "Original", r: 65, p: 50, cd: "TAPA15" },
-      { c: "Tapas Traseras", b: "Apple", m: "iPhone 16 Pro / Pro Max", q: "Original", r: 75, p: 60, cd: "TAPA15" },
+      { c: "Tapas Traseras", b: "Samsung", m: "Galaxy A14, A24, A34, A54, A55", q: "Original", r: 35, p: 25, cd: "TAPASAM10" },
+      { c: "Tapas Traseras", b: "Honor", m: "Honor Magic 5 Lite, 6 Lite, 90, 200", q: "Original", r: 40, p: 28, cd: "TAPAHO12" },
+      { c: "Tapas Traseras", b: "Apple", m: "iPhone 8, 8 Plus, X, XR, XS, XS Max, 11", q: "Original", r: 40, p: 30, cd: "TAPA10" },
+      { c: "Tapas Traseras", b: "Samsung", m: "Galaxy S20, S20+, S20 Ultra, S21, S21+, S21 Ultra, S22, S22+, S22 Ultra, S23, S23+, S23 Ultra, S24, S24+, S24 Ultra", q: "Original", r: 45, p: 32, cd: "TAPASAM13" },
+      { c: "Tapas Traseras", b: "Google", m: "Pixel 6, 6 Pro, 7, 7 Pro", q: "Original", r: 45, p: 32, cd: "TAPAPIX13" },
+      { c: "Tapas Traseras", b: "Apple", m: "iPhone 11 Pro, 11 Pro Max, 12 mini", q: "Original", r: 45, p: 35, cd: "TAPA10" },
+      { c: "Tapas Traseras", b: "Apple", m: "iPhone 12, 12 Pro, 12 Pro Max, 13, 14", q: "Original", r: 50, p: 40, cd: "TAPA10" },
+      { c: "Tapas Traseras", b: "Apple", m: "iPhone 13 Pro, 13 Pro Max, 14 Plus, 14 Pro, 14 Pro Max", q: "Original", r: 55, p: 45, cd: "TAPA10" },
+      { c: "Tapas Traseras", b: "Apple", m: "iPhone 15, 15 Plus, 15 Pro, 15 Pro Max, 16, 16 Plus, 16e", q: "Original", r: 65, p: 50, cd: "TAPA15" },
+      { c: "Tapas Traseras", b: "Apple", m: "iPhone 16 Pro, 16 Pro Max", q: "Original", r: 75, p: 60, cd: "TAPA15" },
 
       // BATERÍAS
-      { c: "Baterías", b: "Apple", m: "iPhone 8 a 11", q: "Original", r: 35, p: 25, cd: "BAT10" },
-      { c: "Baterías", b: "Samsung", m: "Galaxy A Series", q: "Original", r: 38, p: 26, cd: "BATSAM12" },
-      { c: "Baterías", b: "Honor", m: "Magic / X Series", q: "Original", r: 38, p: 27, cd: "BATHON11" },
-      { c: "Baterías", b: "Samsung", m: "Galaxy S20 a S23", q: "Original", r: 45, p: 32, cd: "BATSAM13" },
-      { c: "Baterías", b: "Google", m: "Pixel 6 a 7 Pro", q: "Original", r: 48, p: 35, cd: "BATPIX13" },
-      { c: "Baterías", b: "Apple", m: "iPhone 12 Series", q: "Original", r: 55, p: 40, cd: "BATI15" },
-      { c: "Baterías", b: "Apple", m: "iPhone 13 Series", q: "Original", r: 60, p: 45, cd: "BATI15" },
-      { c: "Baterías", b: "Samsung", m: "Galaxy Z Flip 3/4/5", q: "Original", r: 60, p: 45, cd: "BATFLIP15" },
-      { c: "Baterías", b: "Apple", m: "iPhone 14 Series", q: "Original", r: 65, p: 48, cd: "BATI17" },
-      { c: "Baterías", b: "Apple", m: "iPhone 15 Series", q: "Original", r: 70, p: 50, cd: "BATI20" }
+      { c: "Baterías", b: "Apple", m: "iPhone 8, 8 Plus, X, XR, XS, XS Max, 11", q: "Original", r: 35, p: 25, cd: "BAT10" },
+      { c: "Baterías", b: "Samsung", m: "Galaxy A10, A20, A30, A50, A12, A13, A14, A15, A24, A34, A54, A55", q: "Original", r: 38, p: 26, cd: "BATSAM12" },
+      { c: "Baterías", b: "Honor", m: "Honor X5, X6, X7, X8, Magic 5 Lite, Magic 6 Lite", q: "Original", r: 38, p: 27, cd: "BATHON11" },
+      { c: "Baterías", b: "Samsung", m: "Galaxy S20, S20+, S20 Ultra, S21, S21+, S21 Ultra, S22, S22+, S22 Ultra, S23, S23+, S23 Ultra", q: "Original", r: 45, p: 32, cd: "BATSAM13" },
+      { c: "Baterías", b: "Google", m: "Pixel 6, 6 Pro, 7, 7 Pro", q: "Original", r: 48, p: 35, cd: "BATPIX13" },
+      { c: "Baterías", b: "Apple", m: "iPhone 12 mini, 12, 12 Pro, 12 Pro Max", q: "Original", r: 55, p: 40, cd: "BATI15" },
+      { c: "Baterías", b: "Apple", m: "iPhone 13 mini, 13, 13 Pro, 13 Pro Max", q: "Original", r: 60, p: 45, cd: "BATI15" },
+      { c: "Baterías", b: "Samsung", m: "Galaxy Z Flip 3, Z Flip 4, Z Flip 5", q: "Original", r: 60, p: 45, cd: "BATFLIP15" },
+      { c: "Baterías", b: "Apple", m: "iPhone 14, 14 Plus, 14 Pro, 14 Pro Max", q: "Original", r: 65, p: 48, cd: "BATI17" },
+      { c: "Baterías", b: "Apple", m: "iPhone 15, 15 Plus, 15 Pro, 15 Pro Max", q: "Original", r: 70, p: 50, cd: "BATI20" }
     ];
 
     const DOM = {
@@ -455,7 +450,6 @@
       const isFiltered = state.search !== "" || state.brand !== "all";
       
       ["Pantallas", "Tapas Traseras", "Baterías"].forEach(cat => {
-        // El catálogo ya está ordenado arriba, solo filtramos
         const filtered = catalog.filter(i => 
           i.c === cat && 
           (state.brand === "all" || i.b === state.brand) &&
