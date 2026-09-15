@@ -13,7 +13,6 @@
   <style>
     :root {
       --bg-main: #04070c;
-      /* Glassmorphism Puro */
       --glass-bg: rgba(15, 23, 42, 0.45);
       --glass-bg-hover: rgba(15, 25, 45, 0.7);
       --glass-border-light: rgba(255, 255, 255, 0.15);
@@ -86,7 +85,6 @@
       color: var(--text-main); text-shadow: 3px 3px 6px rgba(0,0,0,0.9);
     }
 
-    /* About Card Base Glassmorphism */
     .glass-card {
       background: var(--glass-bg);
       backdrop-filter: var(--glass-blur);
@@ -148,12 +146,13 @@
     }
 
     /* =========================================
-       DISEÑO TICKET DE CINE ESTILO GLASSMORPHISM 
+       DISEÑO TICKET DE CINE OPTIMIZADO
        ========================================= */
     .ticket-wrap {
       display: flex;
       width: 100%;
-      height: 180px; /* Alto fijo para mantener proporción */
+      height: 100%; /* Permite que crezca según el texto */
+      min-height: 160px; 
       color: #fff;
       font-family: var(--font-body);
       text-decoration: none;
@@ -176,89 +175,108 @@
       border: 1px solid var(--glass-border-light);
       border-right: none;
       border-radius: 12px 0 0 12px;
-      padding: 1rem 1.25rem;
+      padding: 1.25rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      overflow: hidden;
-      position: relative;
     }
 
-    /* Titulo Principal - Header */
-    .ticket-left h1 {
-      font-size: 1.1rem;
-      margin: 0;
-      color: var(--text-main);
-      font-weight: 800;
+    /* Top: Marca y Categoría */
+    .t-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      margin-bottom: 0.75rem;
     }
-    .ticket-left h1 span {
-      font-weight: 400;
-      font-size: 0.85rem;
+    .t-brand {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+    .t-category {
+      font-weight: 700;
+      font-size: 0.75rem;
       color: var(--accent-cyan);
       text-transform: uppercase;
       letter-spacing: 1px;
     }
 
-    /* Modelo y Calidad */
-    .t-title, .t-name, .t-seat, .t-time {
+    /* Mid: Modelo y Calidad */
+    .t-body {
+      margin-bottom: 1.25rem;
+    }
+    .t-model {
+      font-size: 1.35rem; 
+      color: var(--text-main); 
+      margin: 0 0 0.5rem 0; 
+      font-weight: 800; 
+      line-height: 1.2;
+      /* Eliminado el límite de texto para que se muestre completo */
+    }
+    .t-quality {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
       text-transform: uppercase;
+      display: inline-block;
     }
-    .t-title h2 { font-size: 1.15rem; color: var(--text-main); margin: 0; font-weight: 800; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .t-title span { font-size: 0.7rem; color: var(--text-muted); font-weight: 600; }
-    
-    .t-name h2 { font-size: 0.85rem; color: var(--accent-cyan); margin: 0; }
-    .t-name span { font-size: 0.65rem; color: var(--text-muted); }
 
-    /* Precios en línea */
-    .t-bottom-info {
+    .qty-incell { background: rgba(148, 163, 184, 0.15); color: #cbd5e1; border: 1px solid rgba(148, 163, 184, 0.3); }
+    .qty-oled { background: rgba(56, 189, 248, 0.15); color: var(--accent-cyan); border: 1px solid rgba(56, 189, 248, 0.3); }
+    .qty-orig { background: rgba(52, 211, 153, 0.15); color: var(--accent-green); border: 1px solid rgba(52, 211, 153, 0.3); }
+
+    /* Bottom: Precios y CTA */
+    .t-footer {
       display: flex;
-      gap: 1.5rem;
-      align-items: flex-end;
+      flex-direction: column;
+      gap: 0.4rem;
     }
-    
-    .t-seat h2 { font-size: 1.8rem; color: var(--accent-green); margin: 0; line-height: 1; font-weight: 800; }
-    .t-seat span { font-size: 0.65rem; color: var(--text-muted); display: block; margin-top: 2px; }
-
-    .t-time h2 { font-size: 1rem; color: #64748b; margin: 0; line-height: 1; text-decoration: line-through; }
-    .t-time span { font-size: 0.65rem; color: #64748b; display: block; margin-top: 2px; }
+    .t-prices {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+    }
+    .price-promo { 
+      font-size: 2.2rem; 
+      color: var(--accent-green); 
+      font-weight: 800; 
+      line-height: 1; 
+      text-shadow: 0 0 10px rgba(52, 211, 153, 0.2);
+    }
+    .price-regular { 
+      font-size: 1.1rem; 
+      color: #94a3b8; 
+      text-decoration: line-through; 
+      font-weight: 600;
+    }
+    .t-action-hint {
+      font-size: 0.8rem;
+      color: var(--accent-cyan);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 0.25rem;
+    }
 
     /* Panel Derecho (Troquel y Código) */
     .ticket-right {
       width: 85px;
-      /* Gradiente Celeste arriba, oscuro abajo simulando el ticket original */
       background: linear-gradient(to bottom, rgba(56,189,248,0.9) 0%, rgba(56,189,248,0.9) 25%, var(--glass-bg) 25%, var(--glass-bg) 100%);
       backdrop-filter: var(--glass-blur);
       -webkit-backdrop-filter: var(--glass-blur);
       border: 1px solid var(--glass-border-light);
-      border-left: 2px dashed rgba(255, 255, 255, 0.4);
+      border-left: 2px dashed rgba(255, 255, 255, 0.5);
       border-radius: 0 12px 12px 0;
-      position: relative;
       display: flex;
       flex-direction: column;
       align-items: center;
       padding-top: 0.8rem;
     }
 
-    /* Agujeros del troquel */
-    .ticket-right::before,
-    .ticket-right::after {
-      content: "";
-      position: absolute;
-      display: block;
-      width: 1.2rem;
-      height: 1.2rem;
-      background: var(--bg-main); /* Fondea con el color de fondo para simular hueco */
-      border-radius: 50%;
-      left: -0.65rem; /* Centrado en la línea punteada */
-      box-shadow: inset 0 2px 4px rgba(0,0,0,0.8);
-    }
-    .ticket-right::before { top: -0.6rem; }
-    .ticket-right::after { bottom: -0.6rem; }
-
-    /* Ojo / Lente Decorativo Ticket */
     .t-eye {
       position: relative;
       width: 2em; height: 1.5em;
@@ -278,7 +296,6 @@
       border-radius: 50%; left: 12px; top: 8px; z-index: 3;
     }
 
-    /* Texto Vertical del Código */
     .t-number {
       text-align: center;
       text-transform: uppercase;
@@ -288,9 +305,8 @@
       margin: auto 0;
     }
     .t-number h3 { color: var(--text-main); margin: 0; font-size: 1.1rem; letter-spacing: 2px; }
-    .t-number span { display: block; color: var(--accent-cyan); font-size: 0.6rem; margin-right: 5px; }
+    .t-number span { display: block; color: var(--accent-cyan); font-size: 0.6rem; margin-right: 5px; font-weight: 700; }
 
-    /* Código de Barras css puro */
     .t-barcode {
       width: 60%;
       height: 25px;
@@ -462,6 +478,7 @@
     ];
 
     let state = { brand: "all", search: "", expanded: { "Pantallas": false, "Tapas Traseras": false, "Baterías": false } };
+    const qualityClasses = { "Incell": "qty-incell", "OLED": "qty-oled", "Original": "qty-orig" };
 
     function renderCards(items) {
       return items.map(i => {
@@ -473,27 +490,22 @@
             
             <!-- Mitad Izquierda -->
             <div class="ticket-left">
-              <h1>${i.b} <span>${i.c}</span></h1>
-              
-              <div class="t-title">
-                <h2>${i.m}</h2>
-                <span>Modelo de Equipo</span>
+              <div class="t-header">
+                <span class="t-brand">${i.b}</span>
+                <span class="t-category">${i.c}</span>
               </div>
               
-              <div class="t-name">
-                <h2>${i.q}</h2>
-                <span>Calidad de Repuesto</span>
+              <div class="t-body">
+                <h2 class="t-model">${i.m}</h2>
+                <span class="t-quality ${qualityClasses[i.q]}">${i.q}</span>
               </div>
               
-              <div class="t-bottom-info">
-                <div class="t-seat">
-                  <h2>$${i.p}</h2>
-                  <span>Precio Cupón</span>
+              <div class="t-footer">
+                <div class="t-prices">
+                  <span class="price-promo">$${i.p}</span>
+                  <span class="price-regular">$${i.r}</span>
                 </div>
-                <div class="t-time">
-                  <h2>$${i.r}</h2>
-                  <span>Regular</span>
-                </div>
+                <span class="t-action-hint">Toque para canjear <span style="font-size:1.1rem;">👆</span></span>
               </div>
             </div>
 
