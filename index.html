@@ -3,30 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <meta name="description" content="Cupones y promociones de reparación para Apple, Samsung, Honor y Google en TecnoTrade - Mobile Hub." />
-  <title>TecnoTrade | Cupones & Promociones</title>
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <meta name="description" content="TecnoTrade - Reparaciones, Venta de Teléfonos y Accesorios en Mobile Hub" />
+  <title>TecnoTrade | Mobile Hub</title>
   
   <style>
+    /* =========================================
+       VARIABLES ESTILO MACOS (DARK MODE)
+       ========================================= */
     :root {
-      --bg-main: #04070c;
-      --glass-bg: rgba(15, 23, 42, 0.45);
-      --glass-bg-hover: rgba(15, 25, 45, 0.7);
-      --glass-border-light: rgba(255, 255, 255, 0.15);
-      --glass-border-dark: rgba(0, 0, 0, 0.4);
-      --glass-blur: blur(12px) saturate(150%);
-      
+      --bg-body: #000000;
+      --card-solid: #1c1c1e; /* Gris oscuro sólido típico de Apple */
+      --card-elevated: #2c2c2e;
       --text-main: #ffffff;
-      --text-muted: #94a3b8;
-      --accent-cyan: #38bdf8;
-      --accent-green: #34d399;
-      --accent-gold: #fbbf24;
+      --text-secondary: #8e8e93;
+      --apple-blue: #0a84ff;
+      --apple-green: #30d158;
+      --apple-red: #ff453a;
+      --apple-orange: #ff9f0a;
+      --border-color: #38383a;
       
-      --font-body: 'Inter', sans-serif;
-      --font-cursive: 'Caveat', cursive, sans-serif;
+      --font-system: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
     }
 
     * {
@@ -37,543 +33,408 @@
     }
 
     body {
-      background-color: var(--bg-main);
+      background-color: var(--bg-body);
       background-image: 
-        linear-gradient(to bottom, rgba(4, 7, 12, 0.6), rgba(4, 7, 12, 0.85)),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.95)),
         url('https://raw.githubusercontent.com/tecnotradepty/cuponestt/9dea982cdf0fdb6b1c65684be621a2797c22095c/imagenes/file_000000008c9c81f5be91ed5ffd666fd0.png');
       background-size: cover;
       background-position: center top;
       background-attachment: fixed;
       color: var(--text-main);
-      font-family: var(--font-body);
+      font-family: var(--font-system);
+      -webkit-font-smoothing: antialiased;
       line-height: 1.5;
-      padding: 1.5rem 1rem 4rem;
+      padding-bottom: 5rem;
     }
 
-    .container { max-width: 1100px; margin: 0 auto; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 1rem; }
 
-    header { margin-bottom: 2.5rem; }
-    .top-bar { text-align: center; margin-bottom: 1.5rem; }
-
-    .validity-banner {
-      display: inline-block;
-      background: rgba(251, 191, 36, 0.1);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border: 1px solid var(--accent-gold);
-      color: var(--accent-gold);
-      padding: 0.35rem 1.25rem;
-      border-radius: 50px;
-      font: 700 1.35rem var(--font-cursive);
-      letter-spacing: 0.02em;
+    /* =========================================
+       APP HEADER (Fijo arriba)
+       ========================================= */
+    .app-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border-color);
     }
 
-    .brand-identity {
-      display: flex; flex-direction: column; align-items: center;
-      gap: 0.5rem; margin-bottom: 1.5rem;
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
     }
 
     .brand-logo {
-      width: 115px; height: 115px;
-      object-fit: cover; border-radius: 30px;
-      border: 2px solid var(--accent-cyan);
-      box-shadow: 0 0 25px rgba(56, 189, 248, 0.4); background: #000;
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      object-fit: cover;
+      border: 1px solid var(--border-color);
     }
 
-    .brand-title {
-      font: 700 3.8rem/1 var(--font-cursive);
-      color: var(--text-main); text-shadow: 3px 3px 6px rgba(0,0,0,0.9);
+    .brand-info h1 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
     }
 
-    .glass-card {
-      background: var(--glass-bg);
-      backdrop-filter: var(--glass-blur);
-      -webkit-backdrop-filter: var(--glass-blur);
-      border-top: 1px solid var(--glass-border-light);
-      border-left: 1px solid rgba(255, 255, 255, 0.05);
-      border-right: 1px solid var(--glass-border-dark);
-      border-bottom: 1px solid var(--glass-border-dark);
-      border-radius: 16px;
-      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6);
+    .brand-info span {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      font-weight: 500;
     }
 
-    .about-card { padding: 1.5rem; text-align: center; max-width: 820px; margin: 0 auto; }
-    .about-card h2 { font: 700 2.2rem/1.1 var(--font-cursive); color: var(--accent-cyan); margin-bottom: 0.5rem; }
-    .about-text { font: 400 1.45rem/1.3 var(--font-cursive); color: var(--text-main); margin-bottom: 1.25rem; }
+    .btn-instagram {
+      background: var(--card-elevated);
+      color: var(--text-main);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.5rem 0.85rem;
+      border-radius: 20px;
+      border: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: background 0.2s;
+    }
 
-    .store-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.85rem; }
-    .store-link-btn {
-      display: inline-flex; align-items: center;
-      background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border-light);
-      border-radius: 12px; color: var(--text-main);
-      padding: 0.5rem 1.1rem; font: 700 1.25rem var(--font-cursive);
-      text-decoration: none; transition: all 0.3s;
-    }
-    .store-link-btn:hover {
-      background: rgba(56, 189, 248, 0.2); border-color: var(--accent-cyan); transform: translateY(-2px);
-    }
-
-    .controls { display: flex; flex-direction: column; gap: 1.25rem; margin-bottom: 2.5rem; padding: 1.25rem; }
-    .search-box input {
-      width: 100%; padding: 0.85rem 1rem;
-      background: rgba(0, 0, 0, 0.3); border: 1px solid var(--glass-border-light);
-      border-radius: 12px; color: var(--text-main); font-size: 1rem; outline: none; transition: all 0.3s;
-    }
-    .search-box input:focus { border-color: var(--accent-cyan); background: rgba(0, 0, 0, 0.5); }
-
-    .filter-group {
-      display: flex; gap: 0.6rem; align-items: center;
-      overflow-x: auto; padding-bottom: 0.5rem; scrollbar-width: none;
-    }
-    .filter-group::-webkit-scrollbar { display: none; }
-    .filter-title { font: 700 1.35rem var(--font-cursive); margin-right: 0.5rem; flex-shrink: 0; }
-    .filter-btn {
-      background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 8px; color: var(--text-muted); padding: 0.4rem 1.1rem;
-      font: 700 1.2rem var(--font-cursive); cursor: pointer; flex-shrink: 0; transition: all 0.3s;
-    }
-    .filter-btn.active { background: rgba(56, 189, 248, 0.2); border-color: var(--accent-cyan); color: #ffffff; }
-
-    .catalog-section { margin-bottom: 3.5rem; }
-    .section-header {
-      display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem;
-      border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem;
-    }
-    .section-header h2 { font: 700 2.5rem/1 var(--font-cursive); }
-
-    .coupon-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem;
-    }
+    .btn-instagram:hover { background: #3a3a3c; }
 
     /* =========================================
-       DISEÑO TICKET DE CINE OPTIMIZADO
+       SEGMENTED CONTROL (Menú Navegación)
        ========================================= */
-    .ticket-wrap {
+    .segmented-control {
+      display: flex;
+      background: var(--card-solid);
+      border-radius: 10px;
+      padding: 3px;
+      margin-bottom: 2rem;
+    }
+
+    .segmented-control button {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: var(--text-main);
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 0.6rem 0;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .segmented-control button.active {
+      background: #48484a; /* Gris claro de selección en iOS */
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    /* Vistas SPA */
+    .view-section { display: none; }
+    .view-section.active { display: block; animation: fadeIn 0.3s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* =========================================
+       VISTA 1: TELÉFONOS (Preparado para Google Sheets)
+       ========================================= */
+    .phones-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .phone-card {
+      background: var(--card-solid);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .phone-card img { width: 100%; height: 200px; object-fit: contain; border-radius: 8px; background: #000; margin-bottom: 0.5rem; }
+    .phone-card h3 { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.5px; }
+    .phone-specs { display: flex; gap: 10px; font-size: 0.85rem; color: var(--text-secondary); font-weight: 500; }
+    .phone-price { font-size: 1.5rem; font-weight: 800; color: var(--text-main); margin-top: 0.5rem; }
+    .btn-buy { background: var(--apple-blue); color: #fff; text-align: center; padding: 0.75rem; border-radius: 10px; font-weight: 600; text-decoration: none; display: block; margin-top: auto; }
+
+    /* =========================================
+       VISTA 2: OFERTAS (Tickets Sólidos)
+       ========================================= */
+    .filters-scroll {
+      display: flex;
+      gap: 0.5rem;
+      overflow-x: auto;
+      padding-bottom: 1rem;
+      margin-bottom: 1rem;
+      scrollbar-width: none;
+    }
+    .filters-scroll::-webkit-scrollbar { display: none; }
+    .filters-scroll button {
+      background: var(--card-solid); border: 1px solid var(--border-color);
+      color: var(--text-secondary); padding: 0.5rem 1rem; border-radius: 20px;
+      font-size: 0.9rem; font-weight: 600; cursor: pointer; white-space: nowrap;
+    }
+    .filters-scroll button.active { background: var(--text-main); color: #000; }
+
+    .tickets-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
+
+    /* TICKET SÓLIDO MACOS */
+    .ticket-solid {
       display: flex;
       width: 100%;
-      height: 100%; /* Permite que crezca según el texto */
-      min-height: 160px; 
-      color: #fff;
-      font-family: var(--font-body);
+      min-height: 150px;
+      border-radius: 12px;
+      background: var(--card-solid);
+      border: 1px solid var(--border-color);
+      overflow: hidden;
       text-decoration: none;
-      filter: drop-shadow(0 8px 20px rgba(0,0,0,0.5));
-      transition: transform 0.3s ease, filter 0.3s ease;
-      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      transition: transform 0.2s;
     }
+    .ticket-solid:hover { transform: translateY(-3px); }
 
-    .ticket-wrap:hover {
-      transform: translateY(-5px) scale(1.02);
-      filter: drop-shadow(0 15px 30px rgba(56, 189, 248, 0.3));
-    }
-
-    /* Panel Izquierdo (Info principal) */
-    .ticket-left {
+    .ticket-main {
       flex: 1;
-      background: var(--glass-bg);
-      backdrop-filter: var(--glass-blur);
-      -webkit-backdrop-filter: var(--glass-blur);
-      border: 1px solid var(--glass-border-light);
-      border-right: none;
-      border-radius: 12px 0 0 12px;
       padding: 1.25rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      border-right: 2px dashed #48484a; /* Línea de corte sólida */
     }
 
-    /* Top: Marca y Categoría */
-    .t-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 0.75rem;
+    .t-category-brand { font-size: 0.8rem; font-weight: 600; color: var(--text-secondary); text-transform: uppercase; margin-bottom: 0.25rem; display: block; }
+    .t-model { font-size: 1.25rem; font-weight: 700; color: var(--text-main); line-height: 1.2; letter-spacing: -0.5px; margin-bottom: 0.25rem; }
+    
+    .t-quality-pill {
+      display: inline-block; padding: 2px 8px; border-radius: 6px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; margin-bottom: 1rem;
     }
-    .t-brand {
-      font-size: 1.15rem;
-      font-weight: 800;
-      color: var(--text-main);
-    }
-    .t-category {
-      font-weight: 700;
-      font-size: 0.75rem;
-      color: var(--accent-cyan);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
+    .q-incell { background: #3a3a3c; color: #d1d1d6; }
+    .q-oled { background: rgba(10, 132, 255, 0.2); color: var(--apple-blue); }
+    .q-orig { background: rgba(48, 209, 88, 0.2); color: var(--apple-green); }
 
-    /* Mid: Modelo y Calidad */
-    .t-body {
-      margin-bottom: 1.25rem;
-    }
-    .t-model {
-      font-size: 1.35rem; 
-      color: var(--text-main); 
-      margin: 0 0 0.5rem 0; 
-      font-weight: 800; 
-      line-height: 1.2;
-      /* Eliminado el límite de texto para que se muestre completo */
-    }
-    .t-quality {
-      font-size: 0.75rem;
-      font-weight: 700;
-      padding: 0.25rem 0.6rem;
-      border-radius: 6px;
-      text-transform: uppercase;
-      display: inline-block;
-    }
+    .t-prices-box { display: flex; align-items: baseline; gap: 10px; }
+    .t-price-promo { font-size: 1.8rem; font-weight: 800; color: var(--apple-green); letter-spacing: -1px; }
+    .t-price-regular { font-size: 1rem; font-weight: 600; color: var(--text-secondary); text-decoration: line-through; }
 
-    .qty-incell { background: rgba(148, 163, 184, 0.15); color: #cbd5e1; border: 1px solid rgba(148, 163, 184, 0.3); }
-    .qty-oled { background: rgba(56, 189, 248, 0.15); color: var(--accent-cyan); border: 1px solid rgba(56, 189, 248, 0.3); }
-    .qty-orig { background: rgba(52, 211, 153, 0.15); color: var(--accent-green); border: 1px solid rgba(52, 211, 153, 0.3); }
-
-    /* Bottom: Precios y CTA */
-    .t-footer {
+    .ticket-stub {
+      width: 90px;
+      background: var(--apple-blue); /* Acento azul Apple */
       display: flex;
       flex-direction: column;
-      gap: 0.4rem;
-    }
-    .t-prices {
-      display: flex;
-      align-items: baseline;
-      gap: 0.75rem;
-    }
-    .price-promo { 
-      font-size: 2.2rem; 
-      color: var(--accent-green); 
-      font-weight: 800; 
-      line-height: 1; 
-      text-shadow: 0 0 10px rgba(52, 211, 153, 0.2);
-    }
-    .price-regular { 
-      font-size: 1.1rem; 
-      color: #94a3b8; 
-      text-decoration: line-through; 
-      font-weight: 600;
-    }
-    .t-action-hint {
-      font-size: 0.8rem;
-      color: var(--accent-cyan);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      display: flex;
+      justify-content: center;
       align-items: center;
-      gap: 5px;
-      margin-top: 0.25rem;
+      padding: 1rem 0;
+      color: #fff;
     }
-
-    /* Panel Derecho (Troquel y Código) */
-    .ticket-right {
-      width: 85px;
-      background: linear-gradient(to bottom, rgba(56,189,248,0.9) 0%, rgba(56,189,248,0.9) 25%, var(--glass-bg) 25%, var(--glass-bg) 100%);
-      backdrop-filter: var(--glass-blur);
-      -webkit-backdrop-filter: var(--glass-blur);
-      border: 1px solid var(--glass-border-light);
-      border-left: 2px dashed rgba(255, 255, 255, 0.5);
-      border-radius: 0 12px 12px 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding-top: 0.8rem;
-    }
-
-    .t-eye {
-      position: relative;
-      width: 2em; height: 1.5em;
-      background: #fff;
-      border-radius: 1em/0.6em;
-      z-index: 1;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-    }
-    .t-eye::before {
-      content: ""; position: absolute;
-      width: 1em; height: 1em; background: var(--accent-cyan);
-      border-radius: 50%; left: 8px; top: 4px; z-index: 2;
-    }
-    .t-eye::after {
-      content: ""; position: absolute;
-      width: 0.4em; height: 0.4em; background: #fff;
-      border-radius: 50%; left: 12px; top: 8px; z-index: 3;
-    }
-
-    .t-number {
-      text-align: center;
-      text-transform: uppercase;
+    
+    .t-stub-code {
       writing-mode: vertical-rl;
-      text-orientation: mixed;
       transform: rotate(180deg);
-      margin: auto 0;
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
     }
-    .t-number h3 { color: var(--text-main); margin: 0; font-size: 1.1rem; letter-spacing: 2px; }
-    .t-number span { display: block; color: var(--accent-cyan); font-size: 0.6rem; margin-right: 5px; font-weight: 700; }
+    .t-stub-icon { font-size: 1.5rem; }
 
-    .t-barcode {
-      width: 60%;
-      height: 25px;
-      margin-bottom: 15px;
-      background: repeating-linear-gradient(
-        to right,
-        #fff 0,
-        #fff 2px,
-        transparent 2px,
-        transparent 4px,
-        var(--accent-cyan) 4px,
-        var(--accent-cyan) 5px,
-        transparent 5px,
-        transparent 7px
-      );
+    /* =========================================
+       VISTA 3: UBICACIÓN
+       ========================================= */
+    .location-card {
+      background: var(--card-solid);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
     }
-
-    /* ========================================= */
-
-    .toggle-container { display: flex; justify-content: center; margin-top: 1.75rem; }
-    .btn-toggle-view {
-      background: rgba(15, 23, 42, 0.5); border: 1px solid var(--accent-cyan);
-      color: var(--accent-cyan); padding: 0.6rem 1.6rem;
-      font: 700 1.35rem var(--font-cursive); border-radius: 50px;
-      cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem;
-      transition: all 0.3s ease; backdrop-filter: blur(8px);
+    .location-card h2 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+    .location-card p { color: var(--text-secondary); margin-bottom: 1.25rem; font-size: 0.95rem; }
+    
+    .map-container {
+      width: 100%; height: 350px; border-radius: 12px; overflow: hidden; border: 1px solid var(--border-color);
     }
-    .btn-toggle-view:hover { background: rgba(56, 189, 248, 0.15); transform: translateY(-2px); }
-    .empty-state { grid-column: 1 / -1; text-align: center; padding: 2.5rem; color: var(--text-muted); font: 400 1.5rem var(--font-cursive); }
-
+    .map-container iframe { width: 100%; height: 100%; border: none; }
+    
   </style>
 </head>
 <body>
 
   <div class="container">
-    <header>
-      <div class="top-bar">
-        <div class="validity-banner">Ofertas válidas del 15 de septiembre al 31 de octubre</div>
-      </div>
-      
-      <div class="brand-identity">
-        <img 
-          src="https://raw.githubusercontent.com/tecnotradepty/cuponestt/b678d6fe731eb2b6aaed1807655be55ad45aa0a0/imagenes/768420594_18089021243367758_8129196020523341355_n.jpg" 
-          alt="TecnoTrade Logo" 
-          class="brand-logo"
-          loading="eager"
-        />
-        <h1 class="brand-title">TecnoTrade</h1>
-      </div>
-
-      <section class="about-card glass-card">
-        <h2>¿Quiénes Somos?</h2>
-        <p class="about-text">
-          TecnoTrade es la página oficial de los técnicos especializados de la tienda Mobile Hub. Navega nuestro catálogo interactivo, filtra tu dispositivo y haz clic en tu cupón para canjearlo reservando directamente por WhatsApp.
-        </p>
-        <div class="store-links">
-          <a href="https://www.instagram.com/tecnotradepty/" target="_blank" rel="noopener noreferrer" class="store-link-btn">Instagram: @tecnotradepty</a>
-          <a href="map.html" class="store-link-btn">Ubicación de la Tienda</a>
+    
+    <!-- HEADER -->
+    <header class="app-header">
+      <div class="brand-group">
+        <img src="https://raw.githubusercontent.com/tecnotradepty/cuponestt/b678d6fe731eb2b6aaed1807655be55ad45aa0a0/imagenes/768420594_18089021243367758_8129196020523341355_n.jpg" alt="Logo" class="brand-logo" />
+        <div class="brand-info">
+          <h1>TecnoTrade</h1>
+          <span>Mobile Hub Panama</span>
         </div>
-      </section>
+      </div>
+      <a href="https://www.instagram.com/tecnotradepty/" target="_blank" class="btn-instagram">
+        📷 Instagram
+      </a>
     </header>
 
-    <section class="controls glass-card">
-      <div class="search-box">
-        <input type="text" id="searchInput" placeholder="Busca tu modelo (ej. iPhone 13, Galaxy S23, Pixel 7 Pro)..." />
-      </div>
+    <!-- SEGMENTED CONTROL -->
+    <nav class="segmented-control" id="navMenu">
+      <button class="active" data-target="view-telefonos">Teléfonos</button>
+      <button data-target="view-ofertas">Ofertas</button>
+      <button data-target="view-ubicacion">Ubicación</button>
+    </nav>
 
-      <div class="filter-group" id="filterGroup">
-        <span class="filter-title">Filtrar por Marca:</span>
-        <button class="filter-btn active" data-brand="all">Todas</button>
-        <button class="filter-btn" data-brand="Apple">Apple</button>
-        <button class="filter-btn" data-brand="Samsung">Samsung</button>
-        <button class="filter-btn" data-brand="Honor">Honor</button>
-        <button class="filter-btn" data-brand="Google">Google</button>
+    <!-- =========================================
+         VISTA 1: TELÉFONOS 
+         ========================================= -->
+    <section id="view-telefonos" class="view-section active">
+      <div class="location-card" style="padding: 1rem; margin-bottom: 1.5rem;">
+        <h2 style="font-size: 1.2rem;">Equipos Disponibles</h2>
+        <p style="margin: 0; font-size:0.85rem;">Catálogo actualizado en tiempo real. Equipos verificados.</p>
+      </div>
+      
+      <!-- Contenedor donde JavaScript inyectará los datos del Excel/Sheets -->
+      <div class="phones-grid" id="phonesContainer">
+        <!-- Ejemplo de Tarjeta (Placeholder temporal) -->
+        <div class="phone-card">
+          <img src="https://via.placeholder.com/300x200/1c1c1e/ffffff?text=Cargando+Imagen" alt="iPhone" />
+          <h3>iPhone 13 Pro Max</h3>
+          <div class="phone-specs">
+            <span>💾 256GB</span>
+            <span>🔋 90%</span>
+            <span>Estética 10/10</span>
+          </div>
+          <div class="phone-price">$650</div>
+          <a href="#" class="btn-buy">Comprar por WhatsApp</a>
+        </div>
+        <!-- Fin Ejemplo -->
       </div>
     </section>
 
-    <!-- PANTALLAS -->
-    <section class="catalog-section" id="section-pantallas">
-      <div class="section-header">
-        <h2>Pantallas</h2>
-      </div>
-      <div class="coupon-grid" id="grid-pantallas"></div>
-      <div class="toggle-container" id="toggle-pantallas"></div>
+    <!-- =========================================
+         VISTA 2: OFERTAS (Reparaciones y Accesorios)
+         ========================================= -->
+    <section id="view-ofertas" class="view-section">
+      <nav class="filters-scroll" id="filtersOfertas">
+        <button class="active" data-filter="all">Ver Todos</button>
+        <button data-filter="Pantallas">Pantallas</button>
+        <button data-filter="Baterías">Baterías</button>
+        <button data-filter="Tapas Traseras">Tapas</button>
+        <button data-filter="Accesorios">Accesorios</button>
+      </nav>
+
+      <div class="tickets-grid" id="ticketsContainer"></div>
     </section>
 
-    <!-- TAPAS TRASERAS -->
-    <section class="catalog-section" id="section-tapas">
-      <div class="section-header">
-        <h2>Tapas Traseras</h2>
+    <!-- =========================================
+         VISTA 3: UBICACIÓN
+         ========================================= -->
+    <section id="view-ubicacion" class="view-section">
+      <div class="location-card">
+        <h2>Visita Nuestro Taller</h2>
+        <p>Estamos ubicados dentro de la tienda Mobile Hub. Contamos con herramientas de precisión y atención al instante.</p>
+        <a href="https://maps.app.goo.gl/UeLwD78YH6QJszY8A" target="_blank" class="btn-buy" style="margin-bottom: 1.5rem;">Abrir en Waze / Google Maps</a>
+        
+        <div class="map-container">
+          <iframe src="https://maps.google.com/maps?q=Mobile%20Hub%20Panama&t=&z=17&ie=UTF8&iwloc=&output=embed" loading="lazy" allowfullscreen></iframe>
+        </div>
       </div>
-      <div class="coupon-grid" id="grid-tapas"></div>
-      <div class="toggle-container" id="toggle-tapas"></div>
     </section>
 
-    <!-- BATERÍAS -->
-    <section class="catalog-section" id="section-baterias">
-      <div class="section-header">
-        <h2>Baterías</h2>
-      </div>
-      <div class="coupon-grid" id="grid-baterias"></div>
-      <div class="toggle-container" id="toggle-baterias"></div>
-    </section>
   </div>
 
   <script>
-    const WA_BASE_URL = "https://wa.me/50768529324?text=";
-    const DOM = {
-      search: document.getElementById("searchInput"),
-      filterGroup: document.getElementById("filterGroup"),
-      grids: {
-        Pantallas: document.getElementById("grid-pantallas"),
-        "Tapas Traseras": document.getElementById("grid-tapas"),
-        Baterías: document.getElementById("grid-baterias")
-      },
-      toggles: {
-        Pantallas: document.getElementById("toggle-pantallas"),
-        "Tapas Traseras": document.getElementById("toggle-tapas"),
-        Baterías: document.getElementById("toggle-baterias")
-      }
-    };
+    const WA_PHONE = "50768529324";
+    const WA_URL = `https://wa.me/${WA_PHONE}?text=`;
 
-    const catalog = [
-      // PANTALLAS
-      { c: "Pantallas", b: "Apple", m: "iPhone X / XS", q: "OLED", r: 60, p: 45, cd: "SCRN15" },
+    // 1. LÓGICA DE NAVEGACIÓN (SPA)
+    const navButtons = document.querySelectorAll('#navMenu button');
+    const views = document.querySelectorAll('.view-section');
+
+    navButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Quitar active de botones
+        navButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        // Ocultar todas las vistas y mostrar la seleccionada
+        const targetId = btn.getAttribute('data-target');
+        views.forEach(v => v.classList.remove('active'));
+        document.getElementById(targetId).classList.add('active');
+      });
+    });
+
+    // 2. BASE DE DATOS LOCAL (OFERTAS / REPARACIONES)
+    const catalogOfertas = [
       { c: "Pantallas", b: "Apple", m: "iPhone 11", q: "Incell", r: 40, p: 30, cd: "SCRN10" },
-      { c: "Pantallas", b: "Apple", m: "iPhone 11 Pro / 11 Pro Max", q: "OLED", r: 75, p: 60, cd: "SCRN15" },
-      { c: "Pantallas", b: "Apple", m: "iPhone 12 / 12 Pro", q: "Incell", r: 45, p: 35, cd: "SCRN10" },
-      { c: "Pantallas", b: "Apple", m: "iPhone 12 / 12 Pro", q: "OLED", r: 80, p: 65, cd: "SCRN15" },
-      { c: "Pantallas", b: "Apple", m: "iPhone 13", q: "Incell", r: 50, p: 38, cd: "SCRN12" },
-      { c: "Pantallas", b: "Apple", m: "iPhone 13", q: "OLED", r: 85, p: 70, cd: "SCRN15" },
-      { c: "Pantallas", b: "Apple", m: "iPhone 13 Pro / 13 Pro Max", q: "OLED", r: 110, p: 90, cd: "SCRN20" },
-      { c: "Pantallas", b: "Apple", m: "iPhone 14 Pro / 14 Pro Max", q: "OLED", r: 130, p: 105, cd: "SCRN25" },
-      { c: "Pantallas", b: "Apple", m: "iPhone 15 Pro / 15 Pro Max", q: "OLED", r: 165, p: 135, cd: "SCRN30" },
-      { c: "Pantallas", b: "Samsung", m: "Galaxy A04 / A05 / A06", q: "Original", r: 35, p: 25, cd: "SAM10" },
-      { c: "Pantallas", b: "Samsung", m: "Galaxy A14 / A15 / A16", q: "Incell", r: 42, p: 30, cd: "SAM12" },
-      { c: "Pantallas", b: "Samsung", m: "Galaxy A34 / A35 / A54 / A55", q: "OLED", r: 75, p: 60, cd: "SAM15" },
-      { c: "Pantallas", b: "Samsung", m: "Galaxy S20 FE / S21 FE", q: "OLED", r: 70, p: 55, cd: "SAM15" },
-      { c: "Pantallas", b: "Samsung", m: "Galaxy S22 Ultra / S23 Ultra", q: "Incell", r: 95, p: 75, cd: "SAM20" },
-      { c: "Pantallas", b: "Samsung", m: "Galaxy S22 Ultra / S23 Ultra", q: "OLED", r: 140, p: 115, cd: "SAM25" },
-      { c: "Pantallas", b: "Honor", m: "Honor X7 / X8 / X9", q: "Original", r: 38, p: 28, cd: "HON10" },
-      { c: "Pantallas", b: "Honor", m: "Honor Magic 5 Lite / 6 Lite", q: "OLED", r: 75, p: 62, cd: "HON13" },
-      { c: "Pantallas", b: "Google", m: "Pixel 6 / 6A / 7", q: "OLED", r: 85, p: 70, cd: "PIX15" },
-      { c: "Pantallas", b: "Google", m: "Pixel 6 Pro", q: "OLED", r: 95, p: 78, cd: "PIXPRO17" },
-      { c: "Pantallas", b: "Google", m: "Pixel 7 Pro", q: "OLED", r: 95, p: 78, cd: "PIXPRO17" },
-      { c: "Pantallas", b: "Google", m: "Pixel 8 Pro", q: "OLED", r: 105, p: 85, cd: "PIXPRO20" },
-      // TAPAS
-      { c: "Tapas Traseras", b: "Apple", m: "iPhone 8 a 11", q: "Original", r: 40, p: 30, cd: "TAPA10" },
-      { c: "Tapas Traseras", b: "Apple", m: "iPhone 11 Pro a 12 mini", q: "Original", r: 45, p: 35, cd: "TAPA10" },
-      { c: "Tapas Traseras", b: "Apple", m: "iPhone 12 a 14", q: "Original", r: 50, p: 40, cd: "TAPA10" },
-      { c: "Tapas Traseras", b: "Apple", m: "iPhone 13 Pro a 14 Pro Max", q: "Original", r: 55, p: 45, cd: "TAPA10" },
-      { c: "Tapas Traseras", b: "Apple", m: "iPhone 15 a 16", q: "Original", r: 65, p: 50, cd: "TAPA15" },
-      { c: "Tapas Traseras", b: "Apple", m: "iPhone 16 Pro / Pro Max", q: "Original", r: 75, p: 60, cd: "TAPA15" },
-      { c: "Tapas Traseras", b: "Samsung", m: "Galaxy S20 a S24 Series", q: "Original", r: 45, p: 32, cd: "TAPASAM13" },
-      { c: "Tapas Traseras", b: "Samsung", m: "Galaxy A14 a A55", q: "Original", r: 35, p: 25, cd: "TAPASAM10" },
-      { c: "Tapas Traseras", b: "Honor", m: "Magic 5/6 Lite / 90 / 200", q: "Original", r: 40, p: 28, cd: "TAPAHO12" },
-      { c: "Tapas Traseras", b: "Google", m: "Pixel 6 a 7 Pro", q: "Original", r: 45, p: 32, cd: "TAPAPIX13" },
-      // BATERÍAS
-      { c: "Baterías", b: "Apple", m: "iPhone 8 a 11", q: "Original", r: 35, p: 25, cd: "BAT10" },
+      { c: "Pantallas", b: "Apple", m: "iPhone 13 Pro Max", q: "OLED", r: 110, p: 90, cd: "SCRN20" },
+      { c: "Pantallas", b: "Samsung", m: "Galaxy S23 Ultra", q: "Incell", r: 95, p: 75, cd: "SAM20" },
       { c: "Baterías", b: "Apple", m: "iPhone 12 Series", q: "Original", r: 55, p: 40, cd: "BATI15" },
-      { c: "Baterías", b: "Apple", m: "iPhone 13 Series", q: "Original", r: 60, p: 45, cd: "BATI15" },
-      { c: "Baterías", b: "Apple", m: "iPhone 14 Series", q: "Original", r: 65, p: 48, cd: "BATI17" },
-      { c: "Baterías", b: "Apple", m: "iPhone 15 Series", q: "Original", r: 70, p: 50, cd: "BATI20" },
-      { c: "Baterías", b: "Samsung", m: "Galaxy A Series", q: "Original", r: 38, p: 26, cd: "BATSAM12" },
-      { c: "Baterías", b: "Samsung", m: "Galaxy S20 a S23", q: "Original", r: 45, p: 32, cd: "BATSAM13" },
-      { c: "Baterías", b: "Samsung", m: "Galaxy Z Flip 3/4/5", q: "Original", r: 60, p: 45, cd: "BATFLIP15" },
-      { c: "Baterías", b: "Honor", m: "Magic / X Series", q: "Original", r: 38, p: 27, cd: "BATHON11" },
-      { c: "Baterías", b: "Google", m: "Pixel 6 a 7 Pro", q: "Original", r: 48, p: 35, cd: "BATPIX13" }
+      { c: "Tapas Traseras", b: "Apple", m: "iPhone 15 Series", q: "Original", r: 65, p: 50, cd: "TAPA15" },
+      // Puedes seguir pegando el catálogo anterior aquí
     ];
 
-    let state = { brand: "all", search: "", expanded: { "Pantallas": false, "Tapas Traseras": false, "Baterías": false } };
-    const qualityClasses = { "Incell": "qty-incell", "OLED": "qty-oled", "Original": "qty-orig" };
+    const qClass = { "Incell": "q-incell", "OLED": "q-oled", "Original": "q-orig" };
 
-    function renderCards(items) {
-      return items.map(i => {
-        const save = i.r - i.p;
-        const msg = encodeURIComponent(`Hola TecnoTrade! Quiero canjear el cupón *${i.cd}* para *${i.c}* de *${i.b} ${i.m}* (Calidad: ${i.q}) por *$${i.p}* (Ahorro: $${save}).`);
-        
+    function renderTickets(filter = "all") {
+      const container = document.getElementById("ticketsContainer");
+      const filtered = filter === "all" ? catalogOfertas : catalogOfertas.filter(i => i.c === filter);
+      
+      container.innerHTML = filtered.map(i => {
+        const msg = encodeURIComponent(`Hola TecnoTrade! Quiero canjear: ${i.cd} para ${i.c} de ${i.m} a $${i.p}`);
         return `
-          <a href="${WA_BASE_URL}${msg}" target="_blank" rel="noopener noreferrer" class="ticket-wrap">
-            
-            <!-- Mitad Izquierda -->
-            <div class="ticket-left">
-              <div class="t-header">
-                <span class="t-brand">${i.b}</span>
-                <span class="t-category">${i.c}</span>
-              </div>
-              
-              <div class="t-body">
+          <a href="${WA_URL}${msg}" target="_blank" class="ticket-solid">
+            <div class="ticket-main">
+              <div>
+                <span class="t-category-brand">${i.c} | ${i.b}</span>
                 <h2 class="t-model">${i.m}</h2>
-                <span class="t-quality ${qualityClasses[i.q]}">${i.q}</span>
+                <span class="t-quality-pill ${qClass[i.q]}">${i.q}</span>
               </div>
-              
-              <div class="t-footer">
-                <div class="t-prices">
-                  <span class="price-promo">$${i.p}</span>
-                  <span class="price-regular">$${i.r}</span>
-                </div>
-                <span class="t-action-hint">Toque para canjear <span style="font-size:1.1rem;">👆</span></span>
+              <div class="t-prices-box">
+                <span class="t-price-promo">$${i.p}</span>
+                <span class="t-price-regular">$${i.r}</span>
               </div>
             </div>
-
-            <!-- Mitad Derecha (Troquel) -->
-            <div class="ticket-right">
-              <div class="t-eye"></div>
-              
-              <div class="t-number">
-                <h3>${i.cd}</h3>
-                <span>CÓDIGO</span>
-              </div>
-              
-              <div class="t-barcode"></div>
+            <div class="ticket-stub">
+              <span class="t-stub-code">${i.cd}</span>
+              <span class="t-stub-icon">🎟️</span>
             </div>
-
           </a>
         `;
       }).join("");
     }
 
-    function renderUI() {
-      const isFiltered = state.search !== "" || state.brand !== "all";
-      
-      ["Pantallas", "Tapas Traseras", "Baterías"].forEach(cat => {
-        const filtered = catalog.filter(i => 
-          i.c === cat && 
-          (state.brand === "all" || i.b === state.brand) &&
-          (state.search === "" || (i.m + i.b).toLowerCase().includes(state.search))
-        ).sort((a, b) => a.p - b.p);
-
-        if (!filtered.length) {
-          DOM.grids[cat].innerHTML = `<div class="empty-state">No hay modelos disponibles bajo estos filtros.</div>`;
-          DOM.toggles[cat].innerHTML = "";
-          return;
-        }
-
-        const toShow = (state.expanded[cat] || isFiltered) ? filtered : filtered.slice(0, 3);
-        DOM.grids[cat].innerHTML = renderCards(toShow);
-
-        if (filtered.length > 3 && !isFiltered) {
-          DOM.toggles[cat].innerHTML = `
-            <button class="btn-toggle-view" onclick="toggle('${cat}')">
-              <span>${state.expanded[cat] ? "Ocultar modelos" : `Ver todos (${filtered.length})`}</span>
-              <span>${state.expanded[cat] ? "▲" : "▼"}</span>
-            </button>`;
-        } else {
-          DOM.toggles[cat].innerHTML = "";
-        }
+    // Filtros de Ofertas
+    const filterBtns = document.querySelectorAll('#filtersOfertas button');
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderTickets(btn.getAttribute('data-filter'));
       });
+    });
+
+    // Render Inicial
+    renderTickets();
+
+    /* =========================================
+       3. PREPARACIÓN PARA GOOGLE SHEETS (CSV)
+       ========================================= */
+    /*
+      Instrucciones futuras: 
+      1. Sube tus teléfonos a un Google Sheet con columnas: Modelo | Capacidad | Bateria | Precio | ImagenURL
+      2. Archivo -> Compartir -> Publicar en la web -> Formato CSV.
+      3. Pegaremos ese link aquí y el script creará las tarjetas solas.
+    */
+    async function loadPhonesFromGoogleSheets() {
+      // Función pendiente de integrar cuando tengas el link de Sheets.
+      console.log("Sistema listo para enlazar Google Sheets.");
     }
-
-    window.toggle = (cat) => { state.expanded[cat] = !state.expanded[cat]; renderUI(); };
-
-    DOM.filterGroup.addEventListener("click", (e) => {
-      if (e.target.classList.contains("filter-btn")) {
-        DOM.filterGroup.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
-        e.target.classList.add("active");
-        state.brand = e.target.getAttribute("data-brand");
-        renderUI();
-      }
-    });
-
-    DOM.search.addEventListener("input", (e) => {
-      state.search = e.target.value.trim().toLowerCase();
-      renderUI();
-    });
-
-    renderUI();
   </script>
 </body>
 </html>
