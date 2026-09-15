@@ -3,24 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="description" content="Cupones y promociones de reparación para Apple, Samsung, Honor y Google en TecnoTrade - Mobile Hub." />
   <title>TecnoTrade | Cupones & Promociones</title>
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  
   <style>
     :root {
       --bg-main: #04070c;
-      /* Ajuste Glassmorphism para legibilidad sobre el fondo */
-      --glass-bg: rgba(10, 15, 30, 0.65);
-      --glass-bg-hover: rgba(15, 25, 45, 0.85);
-      --glass-border: rgba(56, 189, 248, 0.35);
-      --glass-blur: blur(16px);
+      /* Glassmorphism Puro */
+      --glass-bg: rgba(15, 23, 42, 0.35);
+      --glass-bg-hover: rgba(56, 189, 248, 0.15);
+      --glass-border-light: rgba(255, 255, 255, 0.15);
+      --glass-border-dark: rgba(0, 0, 0, 0.4);
+      --glass-blur: blur(20px) saturate(150%);
+      --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6);
       
-      --text-main: #f8fafc;
+      --text-main: #ffffff;
       --text-muted: #cbd5e1;
       --accent-cyan: #38bdf8;
-      --accent-green: #10b981;
-      --accent-gold: #f59e0b;
+      --accent-green: #34d399;
+      --accent-gold: #fbbf24;
       
       --font-body: 'Inter', sans-serif;
       --font-cursive: 'Caveat', cursive, sans-serif;
@@ -37,9 +42,8 @@
 
     body {
       background-color: var(--bg-main);
-      /* Fondo dinámico y oscuro para resaltar el texto, fijado para móviles */
       background-image: 
-        linear-gradient(to bottom, rgba(4, 7, 12, 0.75), rgba(4, 7, 12, 0.9)),
+        linear-gradient(to bottom, rgba(4, 7, 12, 0.6), rgba(4, 7, 12, 0.85)),
         url('https://raw.githubusercontent.com/tecnotradepty/cuponestt/9dea982cdf0fdb6b1c65684be621a2797c22095c/imagenes/file_000000008c9c81f5be91ed5ffd666fd0.png');
       background-size: cover;
       background-position: center top;
@@ -50,43 +54,36 @@
       padding: 1.5rem 1rem 4rem;
     }
 
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
+    .container { max-width: 1100px; margin: 0 auto; }
 
-    /* Clases Base Glassmorphism + Sketch */
+    /* Estructura Glassmorphism */
     .glass-card {
       background: var(--glass-bg);
       backdrop-filter: var(--glass-blur);
       -webkit-backdrop-filter: var(--glass-blur);
-      border: 1.5px solid var(--glass-border);
+      border-top: 1px solid var(--glass-border-light);
+      border-left: 1px solid rgba(255, 255, 255, 0.05);
+      border-right: 1px solid var(--glass-border-dark);
+      border-bottom: 1px solid var(--glass-border-dark);
       border-radius: var(--border-sketch);
-      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+      box-shadow: var(--glass-shadow);
     }
 
-    /* Header & Quiénes Somos */
-    header {
-      margin-bottom: 2.5rem;
-    }
-
-    .top-bar {
-      text-align: center;
-      margin-bottom: 1.5rem;
-    }
+    header { margin-bottom: 2.5rem; }
+    .top-bar { text-align: center; margin-bottom: 1.5rem; }
 
     .validity-banner {
       display: inline-block;
-      background: rgba(245, 158, 11, 0.15);
-      backdrop-filter: blur(5px);
-      border: 2px dashed var(--accent-gold);
+      background: rgba(251, 191, 36, 0.1);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid var(--accent-gold);
       color: var(--accent-gold);
       padding: 0.35rem 1.25rem;
       border-radius: var(--border-sketch);
-      font-family: var(--font-cursive);
-      font-size: 1.35rem;
-      font-weight: 700;
+      font: 700 1.35rem var(--font-cursive);
       letter-spacing: 0.02em;
+      box-shadow: 0 4px 15px rgba(251, 191, 36, 0.15);
     }
 
     .brand-identity {
@@ -98,25 +95,20 @@
     }
 
     .brand-logo {
-      width: 110px;
-      height: 110px;
+      width: 115px; height: 115px;
       object-fit: cover;
       border-radius: var(--border-sketch);
       border: 2px solid var(--accent-cyan);
-      box-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
+      box-shadow: 0 0 25px rgba(56, 189, 248, 0.4);
       background: #000;
     }
 
     .brand-title {
-      font-family: var(--font-cursive);
-      font-size: 3.5rem;
-      font-weight: 700;
-      line-height: 1;
+      font: 700 3.8rem/1 var(--font-cursive);
       color: var(--text-main);
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+      text-shadow: 3px 3px 6px rgba(0,0,0,0.9);
     }
 
-    /* Tarjeta Quiénes Somos */
     .about-card {
       padding: 1.5rem;
       text-align: center;
@@ -125,343 +117,213 @@
     }
 
     .about-card h2 {
-      font-family: var(--font-cursive);
-      font-size: 2.2rem;
+      font: 700 2.2rem/1.1 var(--font-cursive);
       color: var(--accent-cyan);
       margin-bottom: 0.5rem;
-      line-height: 1.1;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
     }
 
     .about-text {
-      font-family: var(--font-cursive);
-      font-size: 1.45rem;
+      font: 400 1.45rem/1.3 var(--font-cursive);
       color: var(--text-main);
-      line-height: 1.3;
       margin-bottom: 1.25rem;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
     }
 
-    .store-links {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 0.85rem;
-    }
+    .store-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.85rem; }
 
     .store-link-btn {
-      display: inline-flex;
-      align-items: center;
-      background: rgba(0, 0, 0, 0.4);
-      border: 1.5px solid var(--accent-cyan);
+      display: inline-flex; align-items: center;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--glass-border-light);
       border-radius: var(--border-sketch);
       color: var(--text-main);
       padding: 0.5rem 1.1rem;
-      font-family: var(--font-cursive);
-      font-size: 1.25rem;
-      font-weight: 700;
+      font: 700 1.25rem var(--font-cursive);
       text-decoration: none;
-      transition: all 0.2s;
-      box-shadow: 2px 2px 0px rgba(0,0,0,0.6);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+      backdrop-filter: blur(4px);
     }
 
     .store-link-btn:hover {
       background: rgba(56, 189, 248, 0.2);
-      transform: translate(-1px, -1px);
-      box-shadow: 3px 3px 0px var(--accent-cyan);
+      border-color: var(--accent-cyan);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
     }
 
-    /* Controles y Búsqueda */
     .controls {
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-      margin-bottom: 2.5rem;
-      padding: 1.25rem;
+      display: flex; flex-direction: column; gap: 1.25rem;
+      margin-bottom: 2.5rem; padding: 1.25rem;
     }
 
     .search-box input {
-      width: 100%;
-      padding: 0.85rem 1rem;
-      background: rgba(0, 0, 0, 0.6);
-      border: 1.5px solid var(--glass-border);
+      width: 100%; padding: 0.85rem 1rem;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--glass-border-light);
       border-radius: var(--border-sketch);
       color: var(--text-main);
-      font-size: 1rem;
-      outline: none;
-      transition: all 0.2s;
+      font-size: 1rem; outline: none;
+      transition: all 0.3s;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
     }
 
     .search-box input:focus {
+      background: rgba(0, 0, 0, 0.5);
       border-color: var(--accent-cyan);
-      box-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.3), inset 0 2px 4px rgba(0,0,0,0.5);
     }
 
     .filter-group {
-      display: flex;
-      gap: 0.5rem;
-      align-items: center;
-      /* Scroll horizontal optimizado para móviles */
-      overflow-x: auto;
-      padding-bottom: 0.5rem;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none; /* Firefox */
+      display: flex; gap: 0.6rem; align-items: center;
+      overflow-x: auto; padding-bottom: 0.5rem;
+      -webkit-overflow-scrolling: touch; scrollbar-width: none;
     }
-    
-    .filter-group::-webkit-scrollbar {
-      display: none; /* Chrome/Safari */
-    }
+    .filter-group::-webkit-scrollbar { display: none; }
 
     .filter-title {
-      font-family: var(--font-cursive);
-      font-size: 1.35rem;
-      font-weight: 700;
-      color: var(--text-main);
-      margin-right: 0.5rem;
-      flex-shrink: 0;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+      font: 700 1.35rem var(--font-cursive);
+      color: var(--text-main); margin-right: 0.5rem;
+      flex-shrink: 0; text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
     }
 
     .filter-btn {
-      background: rgba(0, 0, 0, 0.4);
-      border: 1.5px solid var(--glass-border);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: var(--border-sketch);
-      color: var(--text-muted);
-      padding: 0.4rem 1rem;
-      font-family: var(--font-cursive);
-      font-size: 1.2rem;
-      font-weight: 700;
-      cursor: pointer;
-      flex-shrink: 0;
-      transition: all 0.2s;
+      color: var(--text-muted); padding: 0.4rem 1.1rem;
+      font: 700 1.2rem var(--font-cursive);
+      cursor: pointer; flex-shrink: 0; transition: all 0.3s;
     }
 
     .filter-btn.active {
-      background: var(--accent-cyan);
-      border-color: var(--accent-cyan);
-      color: #041016;
-      box-shadow: 2px 2px 0px rgba(0,0,0,0.5);
-    }
-
-    /* Secciones y Grid */
-    .catalog-section {
-      margin-bottom: 3.5rem;
-    }
-
-    .section-header {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      margin-bottom: 1.5rem;
-      border-bottom: 2px dashed var(--glass-border);
-      padding-bottom: 0.5rem;
-    }
-
-    .section-header h2 {
-      font-family: var(--font-cursive);
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: var(--text-main);
-      line-height: 1;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-    }
-
-    .section-badge {
       background: rgba(56, 189, 248, 0.2);
-      backdrop-filter: blur(4px);
-      border: 1px solid var(--accent-cyan);
-      color: var(--accent-cyan);
-      font-family: var(--font-cursive);
-      font-size: 1.1rem;
-      font-weight: 700;
-      padding: 0.15rem 0.65rem;
-      border-radius: var(--border-sketch);
-    }
-
-    .coupon-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1.5rem;
-    }
-
-    /* Cards */
-    .coupon-card {
-      padding: 1.25rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: all 0.3s ease;
-    }
-
-    .coupon-card:hover {
-      background: var(--glass-bg-hover);
       border-color: var(--accent-cyan);
-      transform: translateY(-4px);
-      box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.7);
-    }
-
-    .card-top {
-      margin-bottom: 1rem;
-    }
-
-    .card-badges {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 0.75rem;
-    }
-
-    .badge-brand {
-      background: rgba(0, 0, 0, 0.4);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      padding: 0.2rem 0.6rem;
-      border-radius: var(--border-sketch);
-      font-family: var(--font-cursive);
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--text-main);
-    }
-
-    .badge-quality {
-      font-family: var(--font-cursive);
-      font-weight: 700;
-      font-size: 1.1rem;
-      padding: 0.2rem 0.6rem;
-      border-radius: var(--border-sketch);
-    }
-
-    .quality-incell { background: rgba(148, 163, 184, 0.15); color: #cbd5e1; border: 1px dashed #cbd5e1; }
-    .quality-oled { background: rgba(56, 189, 248, 0.15); color: var(--accent-cyan); border: 1px dashed var(--accent-cyan); }
-    .quality-original { background: rgba(16, 185, 129, 0.15); color: var(--accent-green); border: 1px dashed var(--accent-green); }
-
-    .card-title {
-      font-size: 1.25rem;
-      font-weight: 800;
-      color: var(--text-main);
+      color: #ffffff;
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
       text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
     }
 
+    .catalog-section { margin-bottom: 3.5rem; }
+    
+    .section-header {
+      display: flex; align-items: center; gap: 0.75rem;
+      margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding-bottom: 0.5rem;
+    }
+    
+    .section-header h2 {
+      font: 700 2.5rem/1 var(--font-cursive);
+      color: var(--text-main); text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    }
+
+    .section-badge {
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: var(--accent-cyan);
+      font: 700 1.1rem var(--font-cursive);
+      padding: 0.15rem 0.65rem; border-radius: var(--border-sketch);
+      box-shadow: 0 2px 8px rgba(56, 189, 248, 0.1);
+    }
+
+    .coupon-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem;
+    }
+
+    .coupon-card {
+      padding: 1.25rem; display: flex; flex-direction: column;
+      justify-content: space-between; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .coupon-card:hover {
+      background: var(--glass-bg-hover); 
+      border-color: var(--accent-cyan);
+      transform: translateY(-5px) scale(1.02); 
+      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.8), inset 0 0 20px rgba(56, 189, 248, 0.1);
+    }
+
+    .card-top { margin-bottom: 1rem; }
+    .card-badges { display: flex; justify-content: space-between; margin-bottom: 0.75rem; }
+    
+    .badge-brand, .badge-quality {
+      font: 700 1.1rem var(--font-cursive);
+      padding: 0.2rem 0.6rem; border-radius: var(--border-sketch);
+      backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+    }
+    .badge-brand {
+      background: rgba(0, 0, 0, 0.5); border: 1px solid rgba(255, 255, 255, 0.1); color: var(--text-main);
+    }
+
+    .qty-incell { background: rgba(148, 163, 184, 0.15); color: #e2e8f0; border: 1px solid rgba(148, 163, 184, 0.3); }
+    .qty-oled { background: rgba(56, 189, 248, 0.15); color: var(--accent-cyan); border: 1px solid rgba(56, 189, 248, 0.3); }
+    .qty-orig { background: rgba(52, 211, 153, 0.15); color: var(--accent-green); border: 1px solid rgba(52, 211, 153, 0.3); }
+
+    .card-title {
+      font-size: 1.3rem; font-weight: 800; color: var(--text-main);
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    }
+
     .pricing-container {
-      display: flex;
-      align-items: baseline;
-      gap: 0.75rem;
-      margin-bottom: 1rem;
-      background: rgba(0, 0, 0, 0.4);
-      border: 1px solid var(--glass-border);
+      display: flex; align-items: baseline; gap: 0.75rem;
+      margin-bottom: 1rem; padding: 0.75rem;
+      background: rgba(0, 0, 0, 0.3); 
+      border: 1px solid rgba(255,255,255,0.05);
       border-radius: var(--border-sketch);
-      padding: 0.75rem;
+      box-shadow: inset 0 2px 5px rgba(0,0,0,0.5);
     }
 
-    .price-regular {
-      font-size: 1rem;
-      text-decoration: line-through;
-      color: var(--text-muted);
-    }
-
-    .price-promo {
-      font-size: 1.8rem;
-      font-weight: 800;
-      color: var(--accent-green);
-    }
-
+    .price-regular { font-size: 1rem; text-decoration: line-through; color: var(--text-muted); }
+    .price-promo { font-size: 1.8rem; font-weight: 800; color: var(--accent-green); text-shadow: 0 0 10px rgba(52, 211, 153, 0.3); }
+    
     .badge-save {
       margin-left: auto;
-      background: rgba(16, 185, 129, 0.2);
-      border: 1px solid var(--accent-green);
-      color: var(--accent-green);
-      font-family: var(--font-cursive);
-      font-size: 1.1rem;
-      font-weight: 700;
-      padding: 0.15rem 0.6rem;
-      border-radius: var(--border-sketch);
+      background: rgba(52, 211, 153, 0.15); border: 1px solid rgba(52, 211, 153, 0.3);
+      color: var(--accent-green); font: 700 1.1rem var(--font-cursive);
+      padding: 0.15rem 0.6rem; border-radius: var(--border-sketch);
     }
 
     .coupon-code-box {
-      border: 1.5px dashed var(--accent-gold);
-      background: rgba(245, 158, 11, 0.1);
-      border-radius: var(--border-sketch);
-      padding: 0.5rem;
-      text-align: center;
-      margin-bottom: 1rem;
+      border: 1px solid rgba(251, 191, 36, 0.3); background: rgba(0, 0, 0, 0.4);
+      border-radius: var(--border-sketch); padding: 0.6rem;
+      text-align: center; margin-bottom: 1rem;
+      box-shadow: inset 0 2px 5px rgba(0,0,0,0.5);
     }
-
-    .coupon-label {
-      font-family: var(--font-cursive);
-      font-size: 1rem;
-      color: var(--accent-gold);
-      display: block;
-      font-weight: 700;
-    }
-
-    .coupon-code {
-      font-family: monospace;
-      font-size: 1.1rem;
-      font-weight: 800;
-      color: var(--text-main);
-      letter-spacing: 0.1em;
-    }
+    .coupon-label { font: 700 1.05rem var(--font-cursive); color: var(--accent-gold); display: block; text-shadow: 1px 1px 2px rgba(0,0,0,0.8); }
+    .coupon-code { font-family: monospace; font-size: 1.15rem; font-weight: 800; color: var(--text-main); letter-spacing: 0.15em; }
 
     .btn-action {
-      background: var(--accent-green);
-      color: #041016;
-      border: 2px solid #041016;
-      border-radius: var(--border-sketch);
-      padding: 0.65rem;
-      font-family: var(--font-cursive);
-      font-size: 1.4rem;
-      font-weight: 700;
-      cursor: pointer;
-      text-align: center;
-      text-decoration: none;
-      display: block;
-      transition: all 0.2s;
-      box-shadow: 2px 2px 0px #041016;
+      background: rgba(52, 211, 153, 0.85); color: #000000;
+      border: 1px solid rgba(255, 255, 255, 0.2); border-radius: var(--border-sketch);
+      padding: 0.65rem; font: 700 1.4rem var(--font-cursive);
+      cursor: pointer; text-align: center; text-decoration: none;
+      display: block; transition: all 0.3s;
+      backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+      box-shadow: 0 4px 15px rgba(52, 211, 153, 0.3);
     }
-
     .btn-action:hover {
-      background: #34d399;
-      transform: translate(-2px, -2px);
-      box-shadow: 4px 4px 0px #041016;
+      background: rgba(52, 211, 153, 1); transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(52, 211, 153, 0.5);
     }
 
-    .toggle-container {
-      display: flex;
-      justify-content: center;
-      margin-top: 1.75rem;
-    }
-
+    .toggle-container { display: flex; justify-content: center; margin-top: 1.75rem; }
     .btn-toggle-view {
-      background: rgba(0, 0, 0, 0.5);
-      border: 1.5px solid var(--accent-cyan);
-      color: var(--accent-cyan);
-      padding: 0.6rem 1.6rem;
-      font-family: var(--font-cursive);
-      font-size: 1.35rem;
-      font-weight: 700;
-      border-radius: var(--border-sketch);
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition: all 0.2s ease;
-      box-shadow: 2px 2px 0px rgba(0,0,0,0.6);
-      backdrop-filter: blur(5px);
+      background: rgba(15, 23, 42, 0.5); border: 1px solid var(--accent-cyan);
+      color: var(--accent-cyan); padding: 0.6rem 1.6rem;
+      font: 700 1.35rem var(--font-cursive); border-radius: var(--border-sketch);
+      cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem;
+      transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(56, 189, 248, 0.15);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
     }
-
-    .btn-toggle-view:hover {
-      background: rgba(56, 189, 248, 0.2);
-      transform: translate(-1px, -1px);
+    .btn-toggle-view:hover { 
+      background: rgba(56, 189, 248, 0.15); transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(56, 189, 248, 0.3);
     }
 
     .empty-state {
-      grid-column: 1 / -1;
-      text-align: center;
-      padding: 2.5rem;
-      color: var(--text-muted);
-      font-family: var(--font-cursive);
-      font-size: 1.5rem;
-      background: rgba(0,0,0,0.4);
-      border-radius: var(--border-sketch);
-      border: 1px dashed var(--glass-border);
+      grid-column: 1 / -1; text-align: center; padding: 2.5rem;
+      color: var(--text-muted); font: 400 1.5rem var(--font-cursive);
+      background: rgba(0,0,0,0.3); border-radius: var(--border-sketch);
+      border: 1px dashed rgba(255,255,255,0.1);
     }
   </style>
 </head>
@@ -477,7 +339,9 @@
         <img 
           src="https://raw.githubusercontent.com/tecnotradepty/cuponestt/b678d6fe731eb2b6aaed1807655be55ad45aa0a0/imagenes/768420594_18089021243367758_8129196020523341355_n.jpg" 
           alt="TecnoTrade Logo" 
-          class="brand-logo" 
+          class="brand-logo"
+          loading="eager"
+          decoding="async"
         />
         <h1 class="brand-title">TecnoTrade</h1>
       </div>
@@ -503,7 +367,7 @@
         <input type="text" id="searchInput" placeholder="Busca tu modelo (ej. iPhone 13, Galaxy S23, Pixel 7 Pro)..." />
       </div>
 
-      <div class="filter-group">
+      <div class="filter-group" id="filterGroup">
         <span class="filter-title">Filtrar por Marca:</span>
         <button class="filter-btn active" data-brand="all">Todas</button>
         <button class="filter-btn" data-brand="Apple">Apple</button>
@@ -516,213 +380,176 @@
     <!-- PANTALLAS -->
     <section class="catalog-section" id="section-pantallas">
       <div class="section-header">
-        <h2>Pantallas</h2>
-        <span class="section-badge">Instalación Garantizada</span>
+        <h2>Pantallas</h2><span class="section-badge">Instalación Garantizada</span>
       </div>
       <div class="coupon-grid" id="grid-pantallas"></div>
-      <div class="toggle-container" id="toggle-container-pantallas"></div>
+      <div class="toggle-container" id="toggle-pantallas"></div>
     </section>
 
     <!-- TAPAS TRASERAS -->
     <section class="catalog-section" id="section-tapas">
       <div class="section-header">
-        <h2>Tapas Traseras</h2>
-        <span class="section-badge">Cierre Hermético</span>
+        <h2>Tapas Traseras</h2><span class="section-badge">Cierre Hermético</span>
       </div>
       <div class="coupon-grid" id="grid-tapas"></div>
-      <div class="toggle-container" id="toggle-container-tapas"></div>
+      <div class="toggle-container" id="toggle-tapas"></div>
     </section>
 
     <!-- BATERÍAS -->
     <section class="catalog-section" id="section-baterias">
       <div class="section-header">
-        <h2>Baterías</h2>
-        <span class="section-badge">Salud 100%</span>
+        <h2>Baterías</h2><span class="section-badge">Salud 100%</span>
       </div>
       <div class="coupon-grid" id="grid-baterias"></div>
-      <div class="toggle-container" id="toggle-container-baterias"></div>
+      <div class="toggle-container" id="toggle-baterias"></div>
     </section>
   </div>
 
   <script>
-    const WA_NUMBER = "50768529324";
-
-    const catalog = [
-      /* PANTALLAS */
-      { id: "p-1", category: "Pantallas", brand: "Apple", model: "iPhone X / XS", quality: "OLED", regular: 60, promo: 45, code: "SCRN15" },
-      { id: "p-2", category: "Pantallas", brand: "Apple", model: "iPhone 11", quality: "Incell", regular: 40, promo: 30, code: "SCRN10" },
-      { id: "p-3", category: "Pantallas", brand: "Apple", model: "iPhone 11 Pro / 11 Pro Max", quality: "OLED", regular: 75, promo: 60, code: "SCRN15" },
-      { id: "p-4", category: "Pantallas", brand: "Apple", model: "iPhone 12 / 12 Pro", quality: "Incell", regular: 45, promo: 35, code: "SCRN10" },
-      { id: "p-5", category: "Pantallas", brand: "Apple", model: "iPhone 12 / 12 Pro", quality: "OLED", regular: 80, promo: 65, code: "SCRN15" },
-      { id: "p-6", category: "Pantallas", brand: "Apple", model: "iPhone 13", quality: "Incell", regular: 50, promo: 38, code: "SCRN12" },
-      { id: "p-7", category: "Pantallas", brand: "Apple", model: "iPhone 13", quality: "OLED", regular: 85, promo: 70, code: "SCRN15" },
-      { id: "p-8", category: "Pantallas", brand: "Apple", model: "iPhone 13 Pro / 13 Pro Max", quality: "OLED", regular: 110, promo: 90, code: "SCRN20" },
-      { id: "p-9", category: "Pantallas", brand: "Apple", model: "iPhone 14 Pro / 14 Pro Max", quality: "OLED", regular: 130, promo: 105, code: "SCRN25" },
-      { id: "p-10", category: "Pantallas", brand: "Apple", model: "iPhone 15 Pro / 15 Pro Max", quality: "OLED", regular: 165, promo: 135, code: "SCRN30" },
-
-      { id: "p-11", category: "Pantallas", brand: "Samsung", model: "Galaxy A04 / A05 / A06", quality: "Original", regular: 35, promo: 25, code: "SAM10" },
-      { id: "p-12", category: "Pantallas", brand: "Samsung", model: "Galaxy A14 / A15 / A16", quality: "Incell", regular: 42, promo: 30, code: "SAM12" },
-      { id: "p-13", category: "Pantallas", brand: "Samsung", model: "Galaxy A34 / A35 / A54 / A55", quality: "OLED", regular: 75, promo: 60, code: "SAM15" },
-      { id: "p-14", category: "Pantallas", brand: "Samsung", model: "Galaxy S20 FE / S21 FE", quality: "OLED", regular: 70, promo: 55, code: "SAM15" },
-      { id: "p-15", category: "Pantallas", brand: "Samsung", model: "Galaxy S22 Ultra / S23 Ultra", quality: "Incell", regular: 95, promo: 75, code: "SAM20" },
-      { id: "p-16", category: "Pantallas", brand: "Samsung", model: "Galaxy S22 Ultra / S23 Ultra", quality: "OLED", regular: 140, promo: 115, code: "SAM25" },
-
-      { id: "p-17", category: "Pantallas", brand: "Honor", model: "Honor X7 / X8 / X9", quality: "Original", regular: 38, promo: 28, code: "HON10" },
-      { id: "p-18", category: "Pantallas", brand: "Honor", model: "Honor Magic 5 Lite / 6 Lite", quality: "OLED", regular: 75, promo: 62, code: "HON13" },
-
-      { id: "p-19", category: "Pantallas", brand: "Google", model: "Pixel 6 / 6A / 7", quality: "OLED", regular: 85, promo: 70, code: "PIX15" },
-      { id: "p-20", category: "Pantallas", brand: "Google", model: "Pixel 6 Pro", quality: "OLED", regular: 95, promo: 78, code: "PIXPRO17" },
-      { id: "p-21", category: "Pantallas", brand: "Google", model: "Pixel 7 Pro", quality: "OLED", regular: 95, promo: 78, code: "PIXPRO17" },
-      { id: "p-22", category: "Pantallas", brand: "Google", model: "Pixel 8 Pro", quality: "OLED", regular: 105, promo: 85, code: "PIXPRO20" },
-
-      /* TAPAS TRASERAS */
-      { id: "t-1", category: "Tapas Traseras", brand: "Apple", model: "iPhone 8 / 8 Plus / X / XR / XS / 11", quality: "Original", regular: 40, promo: 30, code: "TAPA10" },
-      { id: "t-2", category: "Tapas Traseras", brand: "Apple", model: "iPhone 11 Pro / 11 Pro Max / 12 mini", quality: "Original", regular: 45, promo: 35, code: "TAPA10" },
-      { id: "t-3", category: "Tapas Traseras", brand: "Apple", model: "iPhone 12 / 12 Pro / 12 Pro Max / 13 / 14", quality: "Original", regular: 50, promo: 40, code: "TAPA10" },
-      { id: "t-4", category: "Tapas Traseras", brand: "Apple", model: "iPhone 13 Pro / 13 Pro Max / 14 Plus / 14 Pro / 14 Pro Max", quality: "Original", regular: 55, promo: 45, code: "TAPA10" },
-      { id: "t-5", category: "Tapas Traseras", brand: "Apple", model: "iPhone 15 / 15 Plus / 15 Pro / 15 Pro Max / 16", quality: "Original", regular: 65, promo: 50, code: "TAPA15" },
-      { id: "t-6", category: "Tapas Traseras", brand: "Apple", model: "iPhone 16 Pro / 16 Pro Max", quality: "Original", regular: 75, promo: 60, code: "TAPA15" },
-
-      { id: "t-7", category: "Tapas Traseras", brand: "Samsung", model: "Galaxy S20 / S21 / S22 / S23 / S24 Series", quality: "Original", regular: 45, promo: 32, code: "TAPASAM13" },
-      { id: "t-8", category: "Tapas Traseras", brand: "Samsung", model: "Galaxy A14 / A24 / A34 / A54 / A55", quality: "Original", regular: 35, promo: 25, code: "TAPASAM10" },
-
-      { id: "t-9", category: "Tapas Traseras", brand: "Honor", model: "Honor Magic 5 Lite / 6 Lite / 90 / 200", quality: "Original", regular: 40, promo: 28, code: "TAPAHO12" },
-
-      { id: "t-10", category: "Tapas Traseras", brand: "Google", model: "Pixel 6 / 6 Pro / 7 / 7 Pro", quality: "Original", regular: 45, promo: 32, code: "TAPAPIX13" },
-
-      /* BATERÍAS */
-      { id: "b-1", category: "Baterías", brand: "Apple", model: "iPhone 8 / X / XR / XS / 11", quality: "Original", regular: 35, promo: 25, code: "BAT10" },
-      { id: "b-2", category: "Baterías", brand: "Apple", model: "iPhone 12 / 12 Pro / 12 Pro Max", quality: "Original", regular: 55, promo: 40, code: "BATI15" },
-      { id: "b-3", category: "Baterías", brand: "Apple", model: "iPhone 13 / 13 Pro / 13 Pro Max", quality: "Original", regular: 60, promo: 45, code: "BATI15" },
-      { id: "b-4", category: "Baterías", brand: "Apple", model: "iPhone 14 / 14 Pro / 14 Pro Max", quality: "Original", regular: 65, promo: 48, code: "BATI17" },
-      { id: "b-5", category: "Baterías", brand: "Apple", model: "iPhone 15 / 15 Pro / 15 Pro Max", quality: "Original", regular: 70, promo: 50, code: "BATI20" },
-
-      { id: "b-6", category: "Baterías", brand: "Samsung", model: "Galaxy A Series (A10 - A55)", quality: "Original", regular: 38, promo: 26, code: "BATSAM12" },
-      { id: "b-7", category: "Baterías", brand: "Samsung", model: "Galaxy S20 / S21 / S22 / S23 Series", quality: "Original", regular: 45, promo: 32, code: "BATSAM13" },
-      { id: "b-8", category: "Baterías", brand: "Samsung", model: "Galaxy Z Flip 3 / 4 / 5", quality: "Original", regular: 60, promo: 45, code: "BATFLIP15" },
-
-      { id: "b-9", category: "Baterías", brand: "Honor", model: "Honor Magic Series / X Series", quality: "Original", regular: 38, promo: 27, code: "BATHON11" },
-
-      { id: "b-10", category: "Baterías", brand: "Google", model: "Pixel 6 / 6 Pro / 7 / 7 Pro", quality: "Original", regular: 48, promo: 35, code: "BATPIX13" }
-    ];
-
-    let currentBrand = "all";
-    let currentSearch = "";
-
-    const expandedSections = {
-      "Pantallas": false,
-      "Tapas Traseras": false,
-      "Baterías": false
+    const WA_BASE_URL = "https://wa.me/50768529324?text=";
+    const DOM = {
+      search: document.getElementById("searchInput"),
+      filterGroup: document.getElementById("filterGroup"),
+      grids: {
+        Pantallas: document.getElementById("grid-pantallas"),
+        "Tapas Traseras": document.getElementById("grid-tapas"),
+        Baterías: document.getElementById("grid-baterias")
+      },
+      toggles: {
+        Pantallas: document.getElementById("toggle-pantallas"),
+        "Tapas Traseras": document.getElementById("toggle-tapas"),
+        Baterías: document.getElementById("toggle-baterias")
+      }
     };
 
-    function getQualityClass(quality) {
-      if (quality === "Incell") return "quality-incell";
-      if (quality === "OLED") return "quality-oled";
-      return "quality-original";
+    const catalog = [
+      // PANTALLAS
+      { c: "Pantallas", b: "Apple", m: "iPhone X / XS", q: "OLED", r: 60, p: 45, cd: "SCRN15" },
+      { c: "Pantallas", b: "Apple", m: "iPhone 11", q: "Incell", r: 40, p: 30, cd: "SCRN10" },
+      { c: "Pantallas", b: "Apple", m: "iPhone 11 Pro / 11 Pro Max", q: "OLED", r: 75, p: 60, cd: "SCRN15" },
+      { c: "Pantallas", b: "Apple", m: "iPhone 12 / 12 Pro", q: "Incell", r: 45, p: 35, cd: "SCRN10" },
+      { c: "Pantallas", b: "Apple", m: "iPhone 12 / 12 Pro", q: "OLED", r: 80, p: 65, cd: "SCRN15" },
+      { c: "Pantallas", b: "Apple", m: "iPhone 13", q: "Incell", r: 50, p: 38, cd: "SCRN12" },
+      { c: "Pantallas", b: "Apple", m: "iPhone 13", q: "OLED", r: 85, p: 70, cd: "SCRN15" },
+      { c: "Pantallas", b: "Apple", m: "iPhone 13 Pro / 13 Pro Max", q: "OLED", r: 110, p: 90, cd: "SCRN20" },
+      { c: "Pantallas", b: "Apple", m: "iPhone 14 Pro / 14 Pro Max", q: "OLED", r: 130, p: 105, cd: "SCRN25" },
+      { c: "Pantallas", b: "Apple", m: "iPhone 15 Pro / 15 Pro Max", q: "OLED", r: 165, p: 135, cd: "SCRN30" },
+      { c: "Pantallas", b: "Samsung", m: "Galaxy A04 / A05 / A06", q: "Original", r: 35, p: 25, cd: "SAM10" },
+      { c: "Pantallas", b: "Samsung", m: "Galaxy A14 / A15 / A16", q: "Incell", r: 42, p: 30, cd: "SAM12" },
+      { c: "Pantallas", b: "Samsung", m: "Galaxy A34 / A35 / A54 / A55", q: "OLED", r: 75, p: 60, cd: "SAM15" },
+      { c: "Pantallas", b: "Samsung", m: "Galaxy S20 FE / S21 FE", q: "OLED", r: 70, p: 55, cd: "SAM15" },
+      { c: "Pantallas", b: "Samsung", m: "Galaxy S22 Ultra / S23 Ultra", q: "Incell", r: 95, p: 75, cd: "SAM20" },
+      { c: "Pantallas", b: "Samsung", m: "Galaxy S22 Ultra / S23 Ultra", q: "OLED", r: 140, p: 115, cd: "SAM25" },
+      { c: "Pantallas", b: "Honor", m: "Honor X7 / X8 / X9", q: "Original", r: 38, p: 28, cd: "HON10" },
+      { c: "Pantallas", b: "Honor", m: "Honor Magic 5 Lite / 6 Lite", q: "OLED", r: 75, p: 62, cd: "HON13" },
+      { c: "Pantallas", b: "Google", m: "Pixel 6 / 6A / 7", q: "OLED", r: 85, p: 70, cd: "PIX15" },
+      { c: "Pantallas", b: "Google", m: "Pixel 6 Pro", q: "OLED", r: 95, p: 78, cd: "PIXPRO17" },
+      { c: "Pantallas", b: "Google", m: "Pixel 7 Pro", q: "OLED", r: 95, p: 78, cd: "PIXPRO17" },
+      { c: "Pantallas", b: "Google", m: "Pixel 8 Pro", q: "OLED", r: 105, p: 85, cd: "PIXPRO20" },
+      // TAPAS
+      { c: "Tapas Traseras", b: "Apple", m: "iPhone 8 a 11", q: "Original", r: 40, p: 30, cd: "TAPA10" },
+      { c: "Tapas Traseras", b: "Apple", m: "iPhone 11 Pro a 12 mini", q: "Original", r: 45, p: 35, cd: "TAPA10" },
+      { c: "Tapas Traseras", b: "Apple", m: "iPhone 12 a 14", q: "Original", r: 50, p: 40, cd: "TAPA10" },
+      { c: "Tapas Traseras", b: "Apple", m: "iPhone 13 Pro a 14 Pro Max", q: "Original", r: 55, p: 45, cd: "TAPA10" },
+      { c: "Tapas Traseras", b: "Apple", m: "iPhone 15 a 16", q: "Original", r: 65, p: 50, cd: "TAPA15" },
+      { c: "Tapas Traseras", b: "Apple", m: "iPhone 16 Pro / Pro Max", q: "Original", r: 75, p: 60, cd: "TAPA15" },
+      { c: "Tapas Traseras", b: "Samsung", m: "Galaxy S20 a S24 Series", q: "Original", r: 45, p: 32, cd: "TAPASAM13" },
+      { c: "Tapas Traseras", b: "Samsung", m: "Galaxy A14 a A55", q: "Original", r: 35, p: 25, cd: "TAPASAM10" },
+      { c: "Tapas Traseras", b: "Honor", m: "Magic 5/6 Lite / 90 / 200", q: "Original", r: 40, p: 28, cd: "TAPAHO12" },
+      { c: "Tapas Traseras", b: "Google", m: "Pixel 6 a 7 Pro", q: "Original", r: 45, p: 32, cd: "TAPAPIX13" },
+      // BATERÍAS
+      { c: "Baterías", b: "Apple", m: "iPhone 8 a 11", q: "Original", r: 35, p: 25, cd: "BAT10" },
+      { c: "Baterías", b: "Apple", m: "iPhone 12 Series", q: "Original", r: 55, p: 40, cd: "BATI15" },
+      { c: "Baterías", b: "Apple", m: "iPhone 13 Series", q: "Original", r: 60, p: 45, cd: "BATI15" },
+      { c: "Baterías", b: "Apple", m: "iPhone 14 Series", q: "Original", r: 65, p: 48, cd: "BATI17" },
+      { c: "Baterías", b: "Apple", m: "iPhone 15 Series", q: "Original", r: 70, p: 50, cd: "BATI20" },
+      { c: "Baterías", b: "Samsung", m: "Galaxy A Series", q: "Original", r: 38, p: 26, cd: "BATSAM12" },
+      { c: "Baterías", b: "Samsung", m: "Galaxy S20 a S23", q: "Original", r: 45, p: 32, cd: "BATSAM13" },
+      { c: "Baterías", b: "Samsung", m: "Galaxy Z Flip 3/4/5", q: "Original", r: 60, p: 45, cd: "BATFLIP15" },
+      { c: "Baterías", b: "Honor", m: "Magic / X Series", q: "Original", r: 38, p: 27, cd: "BATHON11" },
+      { c: "Baterías", b: "Google", m: "Pixel 6 a 7 Pro", q: "Original", r: 48, p: 35, cd: "BATPIX13" }
+    ];
+
+    let state = { brand: "all", search: "", expanded: { "Pantallas": false, "Tapas Traseras": false, "Baterías": false } };
+    const qualityClasses = { "Incell": "qty-incell", "OLED": "qty-oled", "Original": "qty-orig" };
+
+    function renderCards(items) {
+      return items.map(i => {
+        const save = i.r - i.p;
+        const msg = encodeURIComponent(`Hola TecnoTrade! Quiero canjear el cupón *${i.cd}* para *${i.c}* de *${i.b} ${i.m}* (Calidad: ${i.q}) por *$${i.p}* (Ahorro: $${save}).`);
+        return `
+          <article class="coupon-card glass-card">
+            <div class="card-top">
+              <div class="card-badges">
+                <span class="badge-brand">${i.b}</span>
+                <span class="badge-quality ${qualityClasses[i.q]}">${i.q}</span>
+              </div>
+              <h3 class="card-title">${i.m}</h3>
+            </div>
+            <div>
+              <div class="pricing-container">
+                <span class="price-regular">$${i.r}</span>
+                <span class="price-promo">$${i.p}</span>
+                <span class="badge-save">AHORRA $${save}</span>
+              </div>
+              <div class="coupon-code-box">
+                <span class="coupon-label">Código Promocional</span>
+                <span class="coupon-code">${i.cd}</span>
+              </div>
+              <a href="${WA_BASE_URL}${msg}" target="_blank" rel="noopener" class="btn-action">Canjear en WhatsApp</a>
+            </div>
+          </article>`;
+      }).join("");
     }
 
-    function createCardHTML(item) {
-      const savings = item.regular - item.promo;
-      const waMsg = encodeURIComponent(`Hola TecnoTrade! Quiero canjear el cupón *${item.code}* para *${item.category}* de *${item.brand} ${item.model}* (Calidad: ${item.quality}) por *$${item.promo}* (Ahorro: $${savings}).`);
-      const waUrl = `https://wa.me/${WA_NUMBER}?text=${waMsg}`;
+    function renderUI() {
+      const isFiltered = state.search !== "" || state.brand !== "all";
+      
+      ["Pantallas", "Tapas Traseras", "Baterías"].forEach(cat => {
+        const filtered = catalog.filter(i => 
+          i.c === cat && 
+          (state.brand === "all" || i.b === state.brand) &&
+          (state.search === "" || (i.m + i.b).toLowerCase().includes(state.search))
+        );
 
-      return `
-        <article class="coupon-card glass-card">
-          <div class="card-top">
-            <div class="card-badges">
-              <span class="badge-brand">${item.brand}</span>
-              <span class="badge-quality ${getQualityClass(item.quality)}">${item.quality}</span>
-            </div>
-            <h3 class="card-title">${item.model}</h3>
-          </div>
-
-          <div>
-            <div class="pricing-container">
-              <span class="price-regular">$${item.regular}</span>
-              <span class="price-promo">$${item.promo}</span>
-              <span class="badge-save">AHORRA $${savings}</span>
-            </div>
-
-            <div class="coupon-code-box">
-              <span class="coupon-label">Código Promocional</span>
-              <span class="coupon-code">${item.code}</span>
-            </div>
-
-            <a href="${waUrl}" target="_blank" rel="noopener noreferrer" class="btn-action">
-              Canjear en WhatsApp
-            </a>
-          </div>
-        </article>
-      `;
-    }
-
-    function toggleSection(catKey) {
-      expandedSections[catKey] = !expandedSections[catKey];
-      renderSections();
-    }
-
-    function renderSections() {
-      const filtered = catalog.filter(item => {
-        const matchBrand = currentBrand === "all" || item.brand === currentBrand;
-        const matchSearch = currentSearch === "" ||
-          item.model.toLowerCase().includes(currentSearch) ||
-          item.brand.toLowerCase().includes(currentSearch);
-        return matchBrand && matchSearch;
-      });
-
-      const categories = [
-        { key: "Pantallas", gridId: "grid-pantallas", toggleId: "toggle-container-pantallas" },
-        { key: "Tapas Traseras", gridId: "grid-tapas", toggleId: "toggle-container-tapas" },
-        { key: "Baterías", gridId: "grid-baterias", toggleId: "toggle-container-baterias" }
-      ];
-
-      categories.forEach(cat => {
-        const gridEl = document.getElementById(cat.gridId);
-        const toggleEl = document.getElementById(cat.toggleId);
-        const items = filtered.filter(i => i.category === cat.key);
-
-        if (items.length === 0) {
-          gridEl.innerHTML = `<div class="empty-state">No hay modelos disponibles bajo los filtros aplicados.</div>`;
-          toggleEl.innerHTML = "";
+        if (!filtered.length) {
+          DOM.grids[cat].innerHTML = `<div class="empty-state">No hay modelos disponibles bajo estos filtros.</div>`;
+          DOM.toggles[cat].innerHTML = "";
           return;
         }
 
-        const isExpanded = expandedSections[cat.key];
-        const isSearchingOrFiltering = currentSearch !== "" || currentBrand !== "all";
+        const toShow = (state.expanded[cat] || isFiltered) ? filtered : filtered.slice(0, 3);
+        DOM.grids[cat].innerHTML = renderCards(toShow);
 
-        const visibleItems = (isExpanded || isSearchingOrFiltering) ? items : items.slice(0, 3);
-        gridEl.innerHTML = visibleItems.map(createCardHTML).join("");
-
-        if (items.length > 3 && !isSearchingOrFiltering) {
-          toggleEl.innerHTML = `
-            <button class="btn-toggle-view" onclick="toggleSection('${cat.key}')">
-              <span>${isExpanded ? "Ocultar modelos" : `Ver todos los modelos (${items.length})`}</span>
-              <span>${isExpanded ? "▲" : "▼"}</span>
-            </button>
-          `;
+        if (filtered.length > 3 && !isFiltered) {
+          DOM.toggles[cat].innerHTML = `
+            <button class="btn-toggle-view" onclick="toggle('${cat}')">
+              <span>${state.expanded[cat] ? "Ocultar modelos" : `Ver todos (${filtered.length})`}</span>
+              <span>${state.expanded[cat] ? "▲" : "▼"}</span>
+            </button>`;
         } else {
-          toggleEl.innerHTML = "";
+          DOM.toggles[cat].innerHTML = "";
         }
       });
     }
 
-    document.querySelectorAll(".filter-btn").forEach(btn => {
-      btn.addEventListener("click", () => {
-        document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-        currentBrand = btn.getAttribute("data-brand");
-        renderSections();
-      });
+    window.toggle = (cat) => { state.expanded[cat] = !state.expanded[cat]; renderUI(); };
+
+    DOM.filterGroup.addEventListener("click", (e) => {
+      if (e.target.classList.contains("filter-btn")) {
+        DOM.filterGroup.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+        e.target.classList.add("active");
+        state.brand = e.target.getAttribute("data-brand");
+        renderUI();
+      }
     });
 
-    document.getElementById("searchInput").addEventListener("input", (e) => {
-      currentSearch = e.target.value.trim().toLowerCase();
-      renderSections();
+    DOM.search.addEventListener("input", (e) => {
+      state.search = e.target.value.trim().toLowerCase();
+      renderUI();
     });
 
-    window.toggleSection = toggleSection;
-
-    renderSections();
+    renderUI();
   </script>
 </body>
 </html>
